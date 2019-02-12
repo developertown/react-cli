@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# TODO: replace this with an actually good blueprinting tool
+
+targetPath=$1
+blueprintFiles="blueprints/files"
+
+echo "Coping files..."
+cp blueprintFiles targetPath -r
+echo "Done!"
