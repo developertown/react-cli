@@ -9,4 +9,9 @@ export const paths = {
       name: '/todos/:status' 
     },
   },
+  errors: {
+    notFound: {
+      path: '/not-found'
+    }
+  }
 }
