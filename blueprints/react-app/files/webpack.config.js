@@ -27,9 +27,9 @@ function checkEnvVar(varName) {
 }
 
 // sorry for the serial env var checking.
-checkEnvVar('AUTH0_CLIENT_ID');
-checkEnvVar('AUTH0_DOMAIN');
-checkEnvVar('AUTH0_CONNECTION');
+// checkEnvVar('AUTH0_CLIENT_ID');
+// checkEnvVar('AUTH0_DOMAIN');
+// checkEnvVar('AUTH0_CONNECTION');
 
 let config = {
   mode: isProduction ? 'production' : 'development',
