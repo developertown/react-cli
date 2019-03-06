@@ -1,5 +1,8 @@
 'use strict';
 
+const path = require('path');
+const rimraf = require('rimraf');
+const fs = require('fs');
 const stringUtil = require('ember-cli-string-utils');
 
 module.exports = {
@@ -33,11 +36,19 @@ module.exports = {
     };
   },
 
-  fileMapTokens(options) {
-    return {
-      __component__() {
-        return options.locals.component;
-      },
-    };
+  afterInstall(options) {
+    let root = process.cwd();
+
+    if (!options.auth0) {
+      // TODO
+    }
+
+    if (!options.jsonapi) {
+      // TODO:
+    }
+
+    if (!options.redux) {
+      rimraf.sync(path.join(root, 'src', 'redux-store'));
+    }
   }
 };

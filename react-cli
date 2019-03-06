@@ -6,13 +6,13 @@ if [ -z "$REACT_CLI_PATH" ]; then
   exit 1
 fi
 
-if [[ $PATH != *"$(yarn global bin)"* ]]; then 
-  echo "yarn's bin folder is not in the PATH"
-  echo "add '$(yarn global bin)' to the path"
-  echo ""
-  echo "export PATH=\"\$PATH:\$(yarn global bin)\""
-  exit 1
-fi
+# if [[ $PATH != *"$(yarn global bin)"* ]]; then 
+#   echo "yarn's bin folder is not in the PATH"
+#   echo "add '$(yarn global bin)' to the path"
+#   echo ""
+#   echo "export PATH=\"\$PATH:\$(yarn global bin)\""
+#   exit 1
+# fi
 
 function react-cli {
   # First arg
@@ -22,10 +22,11 @@ function react-cli {
 
   case $given_command in
     new) 
+      # TODO: ensure ember is installed globally
+      #       (npx re-installs every time)
       ( cd $REACT_CLI_PATH/blueprints/react-app && yarn ) \
-      && ( yarn global add ember-cli@latest ) \
       && \
-      ember new $arguments \
+      npx ember-cli new $arguments \
             --blueprint $REACT_CLI_PATH/blueprints/react-app \
             --yarn \
             --skip-git 
