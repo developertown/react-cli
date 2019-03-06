@@ -1,7 +1,7 @@
 import * as qs from 'querystring';
 
 import * as React from 'react';
-import { assert } from '@lib/debug';
+import { assert } from '~/lib/debug';
 
 export interface IProvidedQueryParams<TQueryParams = {}> {
   queryParams: TQueryParams;

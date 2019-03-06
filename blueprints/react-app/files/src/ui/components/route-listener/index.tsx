@@ -25,7 +25,7 @@ export const RouteListener = compose(
       history.listen((location, action) => {
         // this method takes care of
         // knowing when it needs to not actually do anything
-        fetchCurrentUser();
+        // fetchCurrentUser();
 
         // TODO: if in some debug mode, log transitions and such
         //      (handy for debugging tests)
