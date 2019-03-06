@@ -1,10 +1,50 @@
 #!/bin/bash
 
-# TODO: replace this with an actually good blueprinting tool
+if [ -z "$REACT_CLI_PATH" ]; then
+  echo '$REACT_CLI_PATH is not set!'
+  echo '$REACT_CLI_PATH must point to wherever you cloned the react-cli project.'
+  exit 1
+fi
 
-targetPath=$1
-blueprintFiles="blueprints/files"
+function react-cli {
+  # First arg
+  given_command=$1
+  # The rest of the args
+  arguments=${@:2}
 
-echo "Coping files..."
-cp blueprintFiles targetPath -r
-echo "Done!"
+  case $given_command in
+    new) npx ember-cli new $arguments \
+            --blueprint $REACT_CLI_PATH/blueprints/react-app \
+            --yarn \
+            --skip-git 
+    ;;
+
+    *) print_help;;
+  esac
+}
+
+function print_help {
+  echo ""
+  echo "Available Commands:"
+  echo ""
+  echo "new                creates a new app, given options"
+  echo "  examples:"
+  echo "     ./react-cli new MyProject --directory ~/Development/MyProject --auth0 --jsonapi"
+  echo "     ./react-cli new MyProject --jsonapi --redux"
+  echo ""
+  echo "  available flags:"
+  echo "    --directory"
+  echo "    --auth0"
+  echo "    --i18n"
+  echo "    --jsonapi"
+  echo "    --dotnetBackend"
+  echo "    --materialUi"
+  echo "    --redux"
+ 
+}
+
+if [ $1 ]; then
+  react-cli $*
+else
+  print_help
+fi

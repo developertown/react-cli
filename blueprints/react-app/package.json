@@ -23,8 +23,5 @@
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
-  },
-  "resolutions": {
-    "octane-blueprint-utils": "link:../octane-blueprint-utils"
   }
 }
