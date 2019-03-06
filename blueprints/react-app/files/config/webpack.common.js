@@ -73,10 +73,12 @@ const plugins = [
   // new webpack.WatchIgnorePlugin([/\.d\.ts$/]),
   new CopyWebpackPlugin([{ from: 'src/public' }]),
   new webpack.EnvironmentPlugin([
+    <% if (auth0) { %>
     'AUTH0_CONNECTION',
     'AUTH0_DOMAIN',
     'AUTH0_CLIENT_ID',
     'AUTH0_SCOPE',
+    <% } %>
     'API_HOST',
     'HAS_API',
     'NODE_ENV',

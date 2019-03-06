@@ -1,17 +1,21 @@
 import * as React from 'react';
 import { compose } from 'recompose';
 import { withRouter, RouteComponentProps } from 'react-router';
-import { withCurrentUserContext, ICurrentUserProps } from '@data/containers/with-current-user';
 
+<% if (jsonapi) { %>
+import { withCurrentUserContext, ICurrentUserProps } from '~/data/containers/with-current-user';
+<% } %>
+
+// TODO: convert to hook
 export const RouteListener = compose(
   withRouter,
-  withCurrentUserContext
+  <% if (jsonapi) { %> withCurrentUserContext <% } %>
 )(
   class extends React.Component<RouteComponentProps & ICurrentUserProps> {
     componentDidMount() {
       const {
         history,
-        currentUserProps: { fetchCurrentUser },
+        <% if (jsonapi) { %>  currentUserProps: { fetchCurrentUser },<% } %>
       } = this.props;
 
       // This is needed for testing.

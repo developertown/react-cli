@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import * as env from '@env';
+import * as env from '~/env';
 
 export default () => {
   if (!env.showDebug) {

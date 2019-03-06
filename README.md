@@ -9,4 +9,6 @@ export REACT_CLI_PATH="$PWD/react-cli"
 
 # cd somewhere
 react new my-project --jsonapi --auth0 --redux --dotnetBackend
+cd my-project
+yarn start:dev
 ```

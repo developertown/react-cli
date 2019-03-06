@@ -1,8 +1,6 @@
 /* eslint-disable */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRootPlugin = require('html-webpack-root-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const webpack = require('webpack');
 const dotenv = require('dotenv');
@@ -27,9 +25,11 @@ function checkEnvVar(varName) {
 }
 
 // sorry for the serial env var checking.
-// checkEnvVar('AUTH0_CLIENT_ID');
-// checkEnvVar('AUTH0_DOMAIN');
-// checkEnvVar('AUTH0_CONNECTION');
+<% if (auth0) { %>
+checkEnvVar('AUTH0_CLIENT_ID');
+checkEnvVar('AUTH0_DOMAIN');
+checkEnvVar('AUTH0_CONNECTION');
+<% } %>
 
 let config = {
   mode: isProduction ? 'production' : 'development',
@@ -37,7 +37,6 @@ let config = {
   context: process.cwd(),
   entry: {
     app: locate('src/index.tsx'),
-    // WorkflowApp: locate('src/ui/routes/workflow/app.tsx'),
   },
   module: {
     rules: moduleRules
@@ -52,7 +51,7 @@ let config = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Scriptoria',
+      title: '<%= rawName %>',
       meta: {
         favicon: '/favicon.ico',
         viewport: 'width=device-width,initial-scale=1,shrink-to-fit=no',
@@ -88,8 +87,6 @@ let config = {
 
 if (isDevelopment) {
   config.plugins = config.plugins.concat([
-    // new ForkTsCheckerWebpackPlugin(),
-    // new BundleAnalyzerPlugin(),
     new webpack.HotModuleReplacementPlugin({
       // Options...
     }),

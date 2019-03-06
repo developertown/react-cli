@@ -1,25 +1,26 @@
 import * as React from 'react';
 import { BrowserRouter, Router as GenericRouter } from 'react-router-dom';
+
+<% if (i18n) { %>
 import { I18nextProvider } from 'react-i18next';
+<% } %>
+
+<% if (jsonapi) { %>
 import { APIProvider, strategies } from 'react-orbitjs';
-import { Provider as CurrentUserProvider } from '@data/containers/with-current-user';
-import { baseUrl } from '@data/store';
+import { baseUrl } from '~/data/store';
+import { schema, keyMap } from '~/data/schema';
+<% } %>
 
-import { ReduxProvider } from '@store';
+<% if (redux) { %>
+import { ReduxProvider } from '~/redux-store';
+<% } %>
 
-import { SocketManager } from '@sockets';
-
-import { ScrollToTop } from '@lib/routing';
-
-import i18n from '~/translations';
-
-import { L10nLoader } from '~/translations/fetch-l10n';
+import { ScrollToTop } from '~/utils/routing';
 
 import { RouteListener } from './components/route-listener';
 import DebugInfo from './components/debug-info';
 import RootRoute from './routes/root';
 
-import { schema, keyMap } from '~/data/schema';
 
 interface IProps {
   initialState: any;
@@ -27,51 +28,56 @@ interface IProps {
   history: any;
 }
 
-export default class Application extends React.Component<IProps> {
-  // TODO: add app loader for all the async parts of initializing this
-  //       - intl will need to async'ily fetch the current locale's translations
-  //       - orbit needs to configure the data source coordinator (which is async
-  //         because it may interact with indexeddb for offline support)
-  //       - routes that require authentication in the root route (as denoted by
-  //         the withCurrentUser HOC) will need to have some sort of loading while
-  //         the current user is fetched
-  render() {
-    const { initialState, history, entryComponent } = this.props;
+export default function Application({ initialState, history, entryComponent }: IProps) {
+  const Router = history ? GenericRouter : BrowserRouter;
+  const Component = entryComponent ? entryComponent : RootRoute;
+  const routerProps = {};
 
-    const Router = history ? GenericRouter : BrowserRouter;
-    const Component = entryComponent ? entryComponent : RootRoute;
-    const routerProps = {};
-
-    if (history) {
-      routerProps.history = history;
-    }
-
-    return (
-      <I18nextProvider i18n={i18n}>
-        <L10nLoader>
-          <APIProvider
-            storeCreator={() =>
-              strategies.pessimisticWithRemoteIds.createStore(baseUrl, schema, keyMap)
-            }
-          >
-            <CurrentUserProvider>
-              <SocketManager>
-                <ReduxProvider initialState={initialState || {}}>
-                  <Router {...routerProps}>
-                    <>
-                      <RouteListener />
-                      <ScrollToTop>
-                        <Component />
-                      </ScrollToTop>
-                      <DebugInfo />
-                    </>
-                  </Router>
-                </ReduxProvider>
-              </SocketManager>
-            </CurrentUserProvider>
-          </APIProvider>
-        </L10nLoader>
-      </I18nextProvider>
-    );
+  if (history) {
+    routerProps.history = history;
   }
+
+  return (
+    <% if (i18n) { %>
+    <I18nextProvider i18n={i18n}>
+      <L10nLoader>
+    <% } %>
+
+        <% if (jsonapi) { %>
+        <APIProvider
+          storeCreator={() =>
+            strategies.pessimisticWithRemoteIds.createStore(baseUrl, schema, keyMap)
+          }
+        >
+          <CurrentUserProvider>
+        <% } %>
+
+              <% if (redux) { %>
+              <ReduxProvider initialState={initialState || {}}>
+              <% } %>
+                <Router {...routerProps}>
+                  <>
+                    <RouteListener />
+                    <ScrollToTop>
+                      <Component />
+                    </ScrollToTop>
+                    <DebugInfo />
+                  </>
+                </Router>
+
+              <% if (redux) { %>
+              </ReduxProvider>
+              <% } %>
+
+        <% if (jsonapi) { %>
+          </CurrentUserProvider>
+        </APIProvider>
+        <% } %>
+
+    <% if (i18n) { %>
+      </L10nLoader>
+    </I18nextProvider>
+    <% } %>
+  );
 }
+

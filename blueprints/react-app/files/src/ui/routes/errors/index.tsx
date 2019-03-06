@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import NotFoundRoute from './not-found';
-import { paths } from '~/src/ui/routes/paths';
+import { paths } from '~/ui/routes/paths';
 export const NotFound = NotFoundRoute;
 
 export default class ErrorsRootRoute extends React.Component {

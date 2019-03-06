@@ -18,6 +18,7 @@ module.exports = {
 
     return {
       name,
+      rawName,
       modulePrefix: name,
       namespace,
       yarn: true,
