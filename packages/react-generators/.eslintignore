@@ -1,0 +1,20 @@
+# handled by different .eslintrc.js
+/files/
+
+/vendor/
+
+# compiled output
+/dist/
+/tmp/
+
+# dependencies
+/node_modules/
+
+# misc
+/coverage/
+!.*
+
+# ember-try
+/.node_modules.ember-try/
+/bower.json.ember-try
+/package.json.ember-try
