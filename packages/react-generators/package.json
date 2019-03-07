@@ -4,12 +4,15 @@
   "private": false,
   "description": "Generator blueprints for developertown's react apps",
   "keywords": [
-    "ember-addon",
-    "ember-blueprint"
+    "ember",
+    "ember-cli",
+    "react",
+    "react-cli",
+    "react-blueprint"
   ],
   "repository": "https://github.com/developertown/react-cli",
   "license": "MIT",
-  "author": "",
+  "author": "NullVoxPopuli",
   "scripts": {
     "lint:js": "eslint ."
   },
@@ -23,6 +26,6 @@
     "eslint-plugin-node": "^8.0.1"
   },
   "engines": {
-    "node": "6.* || 8.* || >= 10.*"
+    "node": "8.* || >= 10.*"
   }
 }
