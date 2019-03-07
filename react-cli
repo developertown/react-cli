@@ -50,7 +50,7 @@ function react-cli {
     g | generate)
       ( cd $GENERATOR_PATH && yarn ) \
       && \
-      ember new $arguments \
+      ember g $arguments \
             --blueprint $GENERATOR_PATH \
             --yarn \
             --skip-git 
