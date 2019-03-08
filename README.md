@@ -3,12 +3,9 @@
 ### Usage
 
 ```bash
-git clone git@github.com:developertown/react-cli.git
-alias react="$PWD/react-cli/react-cli"
-export REACT_CLI_PATH="$PWD/react-cli"
+npm install -g @developertown/react-cli
 
-# cd somewhere
-react new my-project --jsonapi --auth0 --redux --dotnetBackend
+react new 
 cd my-project
 yarn start:dev
 ```

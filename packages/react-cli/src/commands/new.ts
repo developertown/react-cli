@@ -51,7 +51,7 @@ export class NewCommand extends Command {
       answers.name,
       ...answers.functionality.map((feat :string) => `--${feat}`),
       `--${answers.style}`,
-      '--blueprint ../react-app',
+      '--blueprint @developertown/react-app',
       '--yarn',
       '--skip-git',
       '--directory tmp'
