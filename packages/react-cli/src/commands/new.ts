@@ -3,6 +3,7 @@ import { ensureDependencies } from '../tasks/ensure-dependiencies';
 import { runEmber } from '../tasks/run-ember';
 import inquirer = require('inquirer');
 import Listr from 'listr';
+import execa = require('execa');
 
 
 const requiredOptions = [
@@ -74,13 +75,13 @@ export class NewCommand extends Command {
       {
         title: 'Creating react project',
         task: () => runEmber('new', ...options, ...requiredOptions),
+      },
+      {
+        title: 'Formatting package.json',
+        task: () => execa.shell(`cd ${options[0]} && npx format-package -w`)
       }
     ]);
 
-    try {
-      await tasks.run();
-    } catch (e) {
-      console.error(e);
-    }
+    await tasks.run();
   }
 }
