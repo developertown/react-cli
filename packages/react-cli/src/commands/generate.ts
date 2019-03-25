@@ -1,9 +1,11 @@
 import { Command } from '@oclif/command';
 import { ensureDependencies } from '../tasks/ensure-dependiencies';
 import { runEmber } from '../tasks/run-ember';
+import Listr from 'listr';
 
 export class GenerateCommand extends Command {
   static description = 'Generates a blueprint';
+  static aliases = ['g'];
 
   static examples = [
     '$ react g component component-name',
@@ -13,20 +15,24 @@ export class GenerateCommand extends Command {
     '$ react generate route path/to/route-name',
   ];
 
-  static args = [
-    { name: 'generator', required: true },
-    { name: 'name', required: true },
-  ]
+  static args = [{ name: 'generator', required: true }, { name: 'name', required: true }];
 
   async run() {
     const { args } = this.parse(GenerateCommand);
 
     await ensureDependencies();
 
-    runEmber(
-      'g',
-      args.generator,
-      args.name
-    )
+    let tasks = new Listr([
+      {
+        title: `Creating ${args.generator} named ${args.name}`,
+        task: () => runEmber('g', args.generator, args.name),
+      },
+    ]);
+
+    try {
+      await tasks.run();
+    } catch (e) {
+      console.error(e);
+    }
   }
 }
