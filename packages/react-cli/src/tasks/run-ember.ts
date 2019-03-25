@@ -1,5 +1,5 @@
-import shell from 'shelljs';
+import execa from 'execa';
 
 export function runEmber(...args: string[]) {
-  shell.exec(`npx ember-cli ${args.join(' ')} `, { silent: false, });
+  return execa.shell(`npx ember-cli ${args.join(' ')} `);
 }

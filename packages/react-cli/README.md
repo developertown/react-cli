@@ -15,11 +15,11 @@ CLI for generating and maintaining react projects at DeveloperTown
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g react-cli
+$ npm install -g @developertown/react-cli
 $ react COMMAND
 running command...
 $ react (-v|--version|version)
-react-cli/0.0.0 linux-x64 node-v8.15.1
+@developertown/react-cli/0.1.0 linux-x64 node-v8.15.1
 $ react --help [COMMAND]
 USAGE
   $ react COMMAND
@@ -28,28 +28,27 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`react hello [FILE]`](#react-hello-file)
+* [`react generate GENERATOR NAME`](#react-generate-generator-name)
 * [`react help [COMMAND]`](#react-help-command)
+* [`react new [PROJECTNAME]`](#react-new-projectname)
 
-## `react hello [FILE]`
+## `react generate GENERATOR NAME`
 
-describe the command here
+Generates a blueprint
 
 ```
 USAGE
-  $ react hello [FILE]
+  $ react generate GENERATOR NAME
 
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-
-EXAMPLE
-  $ react hello
-  hello world from ./src/hello.ts!
+EXAMPLES
+  $ react g component component-name
+  $ react generate component component-name
+  $ react generate component path/to/component-name
+  $ react generate route route-name
+  $ react generate route path/to/route-name
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/developertown/react-cli/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/generate.ts](https://github.com/developertown/react-cli/blob/v0.1.0/src/commands/generate.ts)_
 
 ## `react help [COMMAND]`
 
@@ -67,4 +66,20 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.1.6/src/commands/help.ts)_
+
+## `react new [PROJECTNAME]`
+
+Creates a new react application
+
+```
+USAGE
+  $ react new [PROJECTNAME]
+
+EXAMPLES
+  $ react new project-name --jsonapi --redux
+  $ react new project-name --auth0
+  $ react new project-name
+```
+
+_See code: [src/commands/new.ts](https://github.com/developertown/react-cli/blob/v0.1.0/src/commands/new.ts)_
 <!-- commandsstop -->

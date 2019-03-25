@@ -2,12 +2,14 @@ import { Command } from '@oclif/command';
 import { ensureDependencies } from '../tasks/ensure-dependiencies';
 import { runEmber } from '../tasks/run-ember';
 import inquirer = require('inquirer');
+import Listr from 'listr';
+
 
 const requiredOptions = [
   '--blueprint @developertown/react-app-blueprint',
   '--yarn',
   '--skip-git',
-  '--directory tmp',
+  // '--directory tmp',
 ];
 
 export class NewCommand extends Command {
@@ -68,6 +70,17 @@ export class NewCommand extends Command {
       options.push(`--${answers.style}`);
     }
 
-    runEmber('new', ...options, ...requiredOptions);
+    let tasks = new Listr([
+      {
+        title: 'Creating react project',
+        task: () => runEmber('new', ...options, ...requiredOptions),
+      }
+    ]);
+
+    try {
+      await tasks.run();
+    } catch (e) {
+      console.error(e);
+    }
   }
 }

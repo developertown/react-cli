@@ -1,8 +1,9 @@
 {
-  "name": "react-cli",
+  "name": "@developertown/react-cli",
   "description": "CLI for generating and maintaining react projects at DeveloperTown",
-  "version": "0.0.0",
-  "author": "NullVoxPopuli @NullVoxPopuli",
+  "version": "0.1.0",
+  "private": false,
+  "author": "NullVoxPopuli",
   "bin": {
     "react": "./bin/run"
   },
@@ -14,7 +15,10 @@
     "@types/chalk": "^2.2.0",
     "@types/shelljs": "^0.8.3",
     "chalk": "^2.4.1",
+    "cli-ux": "^5.2.1",
+    "execa": "^1.0.0",
     "inquirer": "^6.2.2",
+    "listr": "^0.14.3",
     "shelljs": "^0.8.3",
     "tslib": "^1"
   },
@@ -23,6 +27,7 @@
     "@oclif/test": "^1",
     "@types/chai": "^4",
     "@types/inquirer": "^0.0.44",
+    "@types/listr": "^0.13.0",
     "@types/mocha": "^5",
     "@types/node": "^10",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
@@ -61,7 +66,7 @@
       "@oclif/plugin-help"
     ]
   },
-  "repository": "developertown/react-cli",
+  "repository": "https://github.com/developertown/react-cli",
   "scripts": {
     "lint:js": "yarn eslint . --ext .js --ext .ts --ext .jsx --ext .tsx",
     "postpack": "rm -f oclif.manifest.json",
