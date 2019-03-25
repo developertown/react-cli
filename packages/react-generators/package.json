@@ -1,6 +1,6 @@
 {
   "name": "@developertown/react-generators-blueprint",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "description": "Generator blueprints for developertown's react apps",
   "keywords": [
