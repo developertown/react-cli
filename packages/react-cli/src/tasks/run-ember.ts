@@ -1,5 +1,5 @@
 import shell from 'shelljs';
 
 export function runEmber(...args: string[]) {
-  shell.exec(`ember ${args.join(' ')} `, { silent: false, });
+  shell.exec(`npx ember-cli ${args.join(' ')} `, { silent: false, });
 }
