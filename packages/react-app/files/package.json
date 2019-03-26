@@ -27,6 +27,8 @@
     "typecheck": "yarn tsc --noEmit"
   },
   "dependencies": {
+    "@developertown/react-generators-blueprint": "*",
+
     <% if (dotnetBackend) { %>
       "@aspnet/signalr": "^1.0.4",
       "@ssv/signalr-client": "^1.0.0",

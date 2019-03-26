@@ -11,6 +11,26 @@ module.exports = {
 
   filesToRemove: [],
 
+  files() {
+    let files = this._super();
+
+    return files.filter(filePath => {
+      if (!this.options.redux) {
+        return !filePath.includes('redux-store');
+      }
+
+      if (!this.options.auth0) {
+        // TODO
+      }
+
+      if (!this.options.jsonapi) {
+        // TODO:
+      }
+
+      return true;
+    });
+  },
+
   // NOTE: this method can return a promise if we need to reach out to npm
   //       or git to get the latest version of something
   locals(options) {
@@ -35,20 +55,4 @@ module.exports = {
       testing: true,
     };
   },
-
-  afterInstall(options) {
-    let root = process.cwd();
-
-    if (!options.auth0) {
-      // TODO
-    }
-
-    if (!options.jsonapi) {
-      // TODO:
-    }
-
-    if (!options.redux) {
-      rimraf.sync(path.join(root, 'src', 'redux-store'));
-    }
-  }
 };

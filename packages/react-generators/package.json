@@ -1,0 +1,31 @@
+{
+  "name": "@developertown/react-generators-blueprint",
+  "version": "0.0.2",
+  "private": false,
+  "description": "Generator blueprints for developertown's react apps",
+  "keywords": [
+    "ember",
+    "ember-cli",
+    "react",
+    "react-cli",
+    "react-blueprint"
+  ],
+  "repository": "https://github.com/developertown/react-cli",
+  "license": "MIT",
+  "author": "NullVoxPopuli",
+  "scripts": {
+    "lint:js": "eslint ."
+  },
+  "dependencies": {
+    "ember-cli-normalize-entity-name": "^1.0.0",
+    "ember-cli-path-utils": "^1.0.0",
+    "ember-cli-string-utils": "^1.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.0",
+    "eslint-plugin-node": "^8.0.1"
+  },
+  "engines": {
+    "node": "8.* || >= 10.*"
+  }
+}
