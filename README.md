@@ -2,18 +2,30 @@
 
 ## Installation
 
-[**_notion_**](https://www.notionjs.com/)
+### [**_notion_**](https://www.notionjs.com/)
 ```bash
 notion install @developertown/react-cli
 ```
 
-**_npm_**
+#### have a fresh computer?
+
+```bash
+# 1. Install notion: https://docs.notionjs.com/guide/getting-started
+curl -sSLf https://get.notionjs.com | bash
+# then, in a new shell:
+# 2. Install Node:
+notion install node 8
+# 3. Install react-cli
+notion install @developertown/react-cli
+```
+
+### **_npm_**
 
 ```bash
 npm install -g @developertown/react-cli
 ```
 
-**_yarn_**
+### **_yarn_**
 ```bash
 yarn global add @developertown/react-cli
 ```
@@ -58,4 +70,22 @@ $ react prepare
 ```bash
 export REACT_APP_BLUEPRINT_PATH=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-app
 alias react=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-cli/bin/run
+```
+
+### Testing installation
+
+```bash
+rm -rf ~/.notion
+# install notion
+# new shell
+notion install node 8
+
+# setup refs to local project
+export REACT_APP_BLUEPRINT_PATH=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-app
+alias react=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-cli/bin/run
+
+# create new app
+react new my-app
+
+# yarn and ember-cli should now be installed
 ```

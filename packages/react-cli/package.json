@@ -1,7 +1,7 @@
 {
   "name": "@developertown/react-cli",
   "description": "CLI for generating and maintaining react projects at DeveloperTown",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "private": false,
   "author": "NullVoxPopuli",
   "bin": {
@@ -18,7 +18,6 @@
     "inquirer": "^6.2.2",
     "listr": "^0.14.3",
     "node-fetch": "^2.3.0",
-    "shelljs": "^0.8.3",
     "tslib": "^1"
   },
   "devDependencies": {
@@ -31,7 +30,6 @@
     "@types/mocha": "^5",
     "@types/node": "^10",
     "@types/node-fetch": "^2.1.7",
-    "@types/shelljs": "^0.8.3",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
     "chai": "^4",
@@ -76,5 +74,8 @@
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
     "version": "oclif-dev readme && git add README.md"
   },
-  "types": "lib/index.d.ts"
+  "types": "lib/index.d.ts",
+  "toolchain": {
+    "node": "8.15.1"
+  }
 }

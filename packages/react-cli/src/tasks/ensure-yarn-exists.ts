@@ -1,9 +1,18 @@
-import shell from 'shelljs';
-import { error } from '../utils/print';
+import { error, success } from '../utils/print';
+import { exists, exec } from '../utils/shell';
 
 export async function ensureYarnExists() {
-  if (!shell.which('yarn')) {
+  const hasYarn = await exists('yarn');
+  const hasNotion = await exists('notion');
+
+  if (!hasYarn) {
     error('yarn is not installed. Installing...');
-    shell.exec('npm install -g yarn', { silent: false });
+
+    if (hasNotion) {
+      await exec('notion install yarn');
+    } else {
+      await exec('npm install -g yarn');
+    }
+    success('yarn successfully installed!');
   }
 }

@@ -1,9 +1,17 @@
-import shell from 'shelljs';
-import { error } from '../utils/print';
+import { error, success } from '../utils/print';
+import { exists, exec } from '../utils/shell';
 
 export async function ensureEmberCliExists() {
-  if (!shell.which('ember')) {
+  const hasEmber = await exists('ember');
+  const hasNotion = await exists('notion');
+
+  if (!hasEmber) {
     error('ember-cli is not installed. Installing...');
-    shell.exec('yarn global add ember-cli', { silent: false });
+    if (hasNotion) {
+      await exec('notion install ember-cli');
+    } else {
+      await exec('yarn global add ember-cli');
+    }
+    success('ember-cli successfully installed!');
   }
 }
