@@ -12,7 +12,6 @@ export function run(command: string, opts = {}) {
 }
 
 export async function exec(command: string) {
-  console.log('running', command);
   return await execa('bash', ['-ic', `"${command}"`], {
     shell: 'bash',
     stdio: 'inherit',

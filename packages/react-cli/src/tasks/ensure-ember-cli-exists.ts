@@ -7,11 +7,13 @@ export async function ensureEmberCliExists() {
 
   if (!hasEmber) {
     error('ember-cli is not installed. Installing...');
+
     if (hasNotion) {
       await exec('notion install ember-cli');
     } else {
-      await exec('yarn global add ember-cli');
+      await exec('npm install -g ember-cli');
     }
+
     success('ember-cli successfully installed!');
   }
 }
