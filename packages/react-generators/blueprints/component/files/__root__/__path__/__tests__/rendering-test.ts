@@ -15,7 +15,7 @@ describe('Rendering | <%= classifiedModuleName %>', () => {
   });
 
   it('renders', () => {
-    expect(page.text).to.not.equal('');
+    expect(page.text).to.contain('A new component named: <%= classifiedModuleName %>');
   });
 
   it('does something else', () => {
