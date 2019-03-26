@@ -3,17 +3,11 @@ import { setupAppForTesting } from '@bigtest/react';
 // import MirageServer, { Factory } from '@bigtest/mirage';
 import createHistory from 'history/createMemoryHistory';
 
-import i18n from '@translations';
-
-import Application from '@ui/application';
-
-import 'semantic-ui-css/semantic.min.css';
-import 'react-toastify/dist/ReactToastify.css';
-import '@ui/styles/app.scss';
+import Application from '~/ui/application';
+import '~/ui/styles/app.scss';
 
 function resetBrowser() {
   localStorage.clear();
-  i18n.changeLanguage('en-US');
 }
 
 export function setupApplicationTest(initialState = {}, history?: History) {

@@ -19,7 +19,7 @@ $ npm install -g @developertown/react-cli
 $ react COMMAND
 running command...
 $ react (-v|--version|version)
-@developertown/react-cli/0.3.0 linux-x64 node-v8.15.1
+@developertown/react-cli/0.4.0 linux-x64 node-v8.15.1
 $ react --help [COMMAND]
 USAGE
   $ react COMMAND
@@ -51,7 +51,7 @@ EXAMPLES
   $ react generate route path/to/route-name
 ```
 
-_See code: [src/commands/generate.ts](https://github.com/developertown/react-cli/blob/v0.3.0/src/commands/generate.ts)_
+_See code: [src/commands/generate.ts](https://github.com/developertown/react-cli/blob/v0.4.0/src/commands/generate.ts)_
 
 ## `react help [COMMAND]`
 
@@ -84,5 +84,5 @@ EXAMPLES
   $ react new project-name
 ```
 
-_See code: [src/commands/new.ts](https://github.com/developertown/react-cli/blob/v0.3.0/src/commands/new.ts)_
+_See code: [src/commands/new.ts](https://github.com/developertown/react-cli/blob/v0.4.0/src/commands/new.ts)_
 <!-- commandsstop -->

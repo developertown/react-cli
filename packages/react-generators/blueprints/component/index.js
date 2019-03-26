@@ -21,6 +21,9 @@ module.exports = {
 
   fileMapTokens: function() {
     return {
+      __root__: function(options) {
+        return '.';
+      },
       __path__: function(options) {
         return path.join(options.locals.path, options.dasherizedModuleName);
       },

@@ -1,5 +1,5 @@
 import { run } from '../utils/shell';
 
-export function runEmber(...args: string[]) {
-  return run(`ember ${args.join(' ')}`);
+export function runEmber(command: string, showOutput = true) {
+  return run(`ember ${command}`, showOutput ? { stdio: 'inherit' } : {});
 }

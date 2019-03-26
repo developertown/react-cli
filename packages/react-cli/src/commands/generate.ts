@@ -22,13 +22,6 @@ export class GenerateCommand extends Command {
 
     await ensureDependencies();
 
-    let tasks = new Listr([
-      {
-        title: `Creating '${args.generator}' named '${args.name}'`,
-        task: () => runEmber('g', args.generator, args.name),
-      },
-    ]);
-
-    await tasks.run();
+    await runEmber(['g', args.generator, args.name].join(' '), true);
   }
 }

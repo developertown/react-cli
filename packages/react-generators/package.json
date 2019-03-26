@@ -1,6 +1,6 @@
 {
   "name": "@developertown/react-generators-blueprint",
-  "version": "0.0.2",
+  "version": "0.2.0",
   "private": false,
   "description": "Generator blueprints for developertown's react apps",
   "keywords": [
@@ -8,7 +8,8 @@
     "ember-cli",
     "react",
     "react-cli",
-    "react-blueprint"
+    "react-blueprint",
+    "ember-addon"
   ],
   "repository": "https://github.com/developertown/react-cli",
   "license": "MIT",

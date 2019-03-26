@@ -77,7 +77,7 @@ export class NewCommand extends Command {
     let tasks = new Listr([
       {
         title: 'Creating react project',
-        task: () => runEmber('new', ...options, ...requiredOptions),
+        task: () => runEmber(['new', ...options, ...requiredOptions].join(' ')),
       },
       {
         title: 'Formatting package.json',
