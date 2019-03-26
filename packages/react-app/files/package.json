@@ -12,7 +12,7 @@
     <% if (testing) { %>
       "karma": "./node_modules/.bin/karma",
       "test:watch:detached": "NODE_OPTIONS=\"--max-old-space-size=4096\" DETACHED=true yarn karma:start",
-      "test:ci": "./scripts/refresh-languages.sh && CI=true yarn karma:start --single-run",
+      "test:ci": "CI=true yarn karma:start --single-run",
     <% } %>
 
     "webpack": "./node_modules/.bin/webpack-cli",
