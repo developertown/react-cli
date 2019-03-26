@@ -42,6 +42,17 @@ installing component
 
 ```
 
+### _adding to an existing project_
+```bash
+# cd to project directory
+$ react prepare
+
+# ---- output ----
+  ✔ Checking for required dependencies
+  ✔ Ensuring that blueprints are installed
+  ✔ Done!
+```
+
 ## Development
 
 ```bash
