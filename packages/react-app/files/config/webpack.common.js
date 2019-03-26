@@ -1,5 +1,3 @@
-const path = require('path');
-
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
@@ -33,7 +31,6 @@ const moduleRules = [
     loader: 'babel-loader',
     options: babelConfig,
     include: [locate('src'), locate('tests')],
-    exclude: [locate('src/public')],
   },
   {
     test: /\.js$/,
@@ -71,7 +68,7 @@ const resolver = {
 
 const plugins = [
   // new webpack.WatchIgnorePlugin([/\.d\.ts$/]),
-  new CopyWebpackPlugin([{ from: 'src/public' }]),
+  new CopyWebpackPlugin([{ from: 'public' }]),
   new webpack.EnvironmentPlugin([
     <% if (auth0) { %>
     'AUTH0_CONNECTION',

@@ -1,5 +1,5 @@
-import execa from 'execa';
+import { run } from '../utils/shell';
 
 export function runEmber(...args: string[]) {
-  return execa.shell(`ember ${args.join(' ')} --verbose`);
+  return run(`ember ${args.join(' ')}`);
 }

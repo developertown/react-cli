@@ -4,10 +4,13 @@ import { runEmber } from '../tasks/run-ember';
 import inquirer = require('inquirer');
 import Listr from 'listr';
 import execa = require('execa');
+import { downloadTSConfigFiles } from '../tasks/download-ts-config';
+import { run } from '../utils/shell';
 
-
+const defaultBlueprint = '@developertown/react-app-blueprint';
+const blueprint = process.env.REACT_APP_BLUEPRINT_PATH || defaultBlueprint;
 const requiredOptions = [
-  '--blueprint @developertown/react-app-blueprint',
+  `--blueprint ${blueprint}`,
   '--yarn',
   '--skip-git',
   // '--directory tmp',
@@ -78,7 +81,15 @@ export class NewCommand extends Command {
       },
       {
         title: 'Formatting package.json',
-        task: () => execa.shell(`cd ${options[0]} && npx format-package -w`)
+        task: () => run(`cd ${options[0]} && npx format-package -w`)
+      },
+      {
+        title: 'Downloading shared config for DeveloperTown',
+        task: () => downloadTSConfigFiles(options[0]),
+      },
+      {
+        title: 'Formatting code',
+        task: () => run(`cd ${options[0]} && yarn lint:js --fix --quiet`)
       }
     ]);
 

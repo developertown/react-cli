@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@developertown/react-generators-blueprint": "*",
+    "ember-cli": "^3.8.1",
 
     <% if (dotnetBackend) { %>
       "@aspnet/signalr": "^1.0.4",
