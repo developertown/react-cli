@@ -1,18 +1,27 @@
+import Listr from 'listr';
 import { error, success } from '../utils/print';
-import { exists, exec } from '../utils/shell';
+import { exec, doesProgramExist, hasNotion } from '../utils/shell';
 
 export async function ensureEmberCliExists() {
-  const hasEmber = await exists('ember');
-  const hasNotion = await exists('notion');
+  const hasEmber = doesProgramExist('ember');
 
   if (!hasEmber) {
-    error('ember-cli is not installed. Installing...');
+    error('ember-cli is not installed.');
 
-    if (hasNotion) {
-      await exec('notion install ember-cli');
-    } else {
-      await exec('npm install -g ember-cli');
-    }
+    let tasks = new Listr([
+      {
+        title: 'Installing ember-cli',
+        task: async () => {
+          if (hasNotion()) {
+            await exec('notion install ember-cli');
+          } else {
+            await exec('npm install -g ember-cli');
+          }
+        },
+      },
+    ]);
+
+    await tasks.run();
 
     success('ember-cli successfully installed!');
   }

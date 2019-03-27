@@ -1,18 +1,26 @@
+import Listr from 'listr';
 import { error, success } from '../utils/print';
-import { exists, exec } from '../utils/shell';
+import { exec, hasNotion, doesProgramExist } from '../utils/shell';
 
 export async function ensureYarnExists() {
-  const hasYarn = await exists('yarn');
-  const hasNotion = await exists('notion');
+  const hasYarn = doesProgramExist('yarn');
 
   if (!hasYarn) {
-    error('yarn is not installed. Installing...');
+    error('yarn is not installed.');
+    let tasks = new Listr([
+      {
+        title: 'Installing Yarn',
+        task: async () => {
+          if (hasNotion()) {
+            await exec('notion install yarn');
+          } else {
+            await exec('npm install -g yarn');
+          }
+        },
+      },
+    ]);
 
-    if (hasNotion) {
-      await exec('notion install yarn');
-    } else {
-      await exec('npm install -g yarn');
-    }
+    await tasks.run();
     success('yarn successfully installed!');
   }
 }

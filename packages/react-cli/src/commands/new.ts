@@ -3,7 +3,6 @@ import { ensureDependencies } from '../tasks/ensure-dependiencies';
 import { runEmber } from '../tasks/run-ember';
 import inquirer = require('inquirer');
 import Listr from 'listr';
-import execa = require('execa');
 import { downloadTSConfigFiles } from '../tasks/download-ts-config';
 import { run } from '../utils/shell';
 

@@ -1,4 +1,5 @@
 import execa from 'execa';
+import shell from 'shelljs';
 import fs from 'fs';
 import os from 'os';
 
@@ -11,21 +12,16 @@ export function run(command: string, opts = {}) {
   return execa.shell(command, options as any);
 }
 
-export async function exec(command: string) {
-  return await execa('bash', ['-ic', `"${command}"`], {
-    shell: 'bash',
-    stdio: 'inherit',
-    reject: true,
+export function exec(command: string) {
+  return new Promise((resolve, reject) => {
+    shell.exec(command, function(code, value, error) {
+      code === 0 ? resolve(value) : reject(error);
+    });
   });
 }
 
-export async function exists(name: string) {
-  const { stdout: hasName } = await execa('bash', [`-ic`, `"type -t ${name}"`], {
-    shell: 'bash',
-    reject: false,
-  });
-
-  return hasName.trim() !== '';
+export function doesProgramExist(name: string) {
+  return shell.which(name);
 }
 
 export function hasNotion() {
