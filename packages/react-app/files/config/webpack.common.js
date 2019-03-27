@@ -58,7 +58,10 @@ const moduleRules = [
 ];
 
 const resolver = {
-  extensions: ['.tsx', '.ts', '.js', '.jsx'],
+  extensions: ['.tsx', '.ts', '.js', '.jsx', '.scss', '.css'],
+  alias: {
+    '~/styles': locate('src/ui/styles'),
+  },
   plugins: [
     new TsconfigPathsPlugin({
       configFile: locate('tsconfig.json'),

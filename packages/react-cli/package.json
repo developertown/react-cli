@@ -1,7 +1,7 @@
 {
   "name": "@developertown/react-cli",
   "description": "CLI for generating and maintaining react projects at DeveloperTown",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "private": false,
   "author": "NullVoxPopuli",
   "bin": {

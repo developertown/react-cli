@@ -10,7 +10,8 @@ const defaultBlueprint = '@developertown/react-app-blueprint';
 const blueprint = process.env.REACT_APP_BLUEPRINT_PATH || defaultBlueprint;
 const requiredOptions = [
   `--blueprint ${blueprint}`,
-  '--yarn',
+  // '--yarn',
+  '--skip-npm',
   '--skip-git',
   // '--directory tmp',
 ];
@@ -85,6 +86,10 @@ export class NewCommand extends Command {
       {
         title: 'Downloading shared config for DeveloperTown',
         task: () => downloadTSConfigFiles(options[0]),
+      },
+      {
+        title: 'Installing Dependencies',
+        task: () => exec(`cd ${options[0]} && yarn install`),
       },
       {
         title: 'Formatting code',

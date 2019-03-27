@@ -7,18 +7,6 @@
 notion install @developertown/react-cli
 ```
 
-#### have a fresh computer?
-
-```bash
-# 1. Install notion: https://docs.notionjs.com/guide/getting-started
-curl -sSLf https://get.notionjs.com | bash
-# then, in a new shell:
-# 2. Install Node:
-notion install node 8
-# 3. Install react-cli
-notion install @developertown/react-cli
-```
-
 ### **_npm_**
 
 ```bash
@@ -29,6 +17,7 @@ npm install -g @developertown/react-cli
 ```bash
 yarn global add @developertown/react-cli
 ```
+
 
 
 ## Usage
