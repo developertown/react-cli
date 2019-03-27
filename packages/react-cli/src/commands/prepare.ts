@@ -1,6 +1,6 @@
 import { Command } from '@oclif/command';
 import { ensureDependencies } from '../tasks/ensure-dependiencies';
-import { run } from '../utils/shell';
+import { exec } from '../utils/shell';
 import fs from 'fs';
 import Listr from 'listr';
 
@@ -25,7 +25,7 @@ export class PrepareCommand extends Command {
             },
             {
               title: 'Installing blueprint dependencies',
-              task: () => run('yarn add --dev ember-cli @developertown/react-generators-blueprint'),
+              task: () => exec('yarn add --dev ember-cli @developertown/react-generators-blueprint'),
             },
           ]),
       },

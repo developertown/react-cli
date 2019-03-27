@@ -1,10 +1,9 @@
 {
   "name": "@developertown/react-generators-blueprint",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": false,
   "description": "Generator blueprints for developertown's react apps",
   "keywords": [
-    "ember",
     "ember-cli",
     "react",
     "react-cli",
@@ -28,5 +27,9 @@
   },
   "engines": {
     "node": "8.* || >= 10.*"
+  },
+  "toolchain": {
+    "node": "8.15.1",
+    "yarn": "1.15.2"
   }
 }

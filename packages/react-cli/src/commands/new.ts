@@ -4,7 +4,7 @@ import { runEmber } from '../tasks/run-ember';
 import inquirer = require('inquirer');
 import Listr from 'listr';
 import { downloadTSConfigFiles } from '../tasks/download-ts-config';
-import { run } from '../utils/shell';
+import { exec } from '../utils/shell';
 
 const defaultBlueprint = '@developertown/react-app-blueprint';
 const blueprint = process.env.REACT_APP_BLUEPRINT_PATH || defaultBlueprint;
@@ -80,7 +80,7 @@ export class NewCommand extends Command {
       },
       {
         title: 'Formatting package.json',
-        task: () => run(`cd ${options[0]} && npx format-package -w`)
+        task: () => exec(`cd ${options[0]} && npx format-package -w`)
       },
       {
         title: 'Downloading shared config for DeveloperTown',
@@ -88,7 +88,7 @@ export class NewCommand extends Command {
       },
       {
         title: 'Formatting code',
-        task: () => run(`cd ${options[0]} && yarn lint:js --fix --quiet`)
+        task: () => exec(`cd ${options[0]} && yarn lint:js --fix --quiet`)
       }
     ]);
 

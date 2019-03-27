@@ -1,5 +1,5 @@
-import { run } from '../utils/shell';
+import { exec } from '../utils/shell';
 
 export function runEmber(command: string, showOutput = false) {
-  return run(`ember ${command}`, showOutput ? { stdio: 'inherit' } : {});
+  return exec(`ember ${command}`, showOutput ? { silent: false } : {});
 }

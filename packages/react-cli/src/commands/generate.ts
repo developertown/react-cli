@@ -1,7 +1,7 @@
 import { Command } from '@oclif/command';
 import { ensureDependencies } from '../tasks/ensure-dependiencies';
 import { runEmber } from '../tasks/run-ember';
-import { run } from '../utils/shell';
+import { exec } from '../utils/shell';
 import Listr from 'listr';
 
 export class GenerateCommand extends Command {
@@ -28,7 +28,7 @@ export class GenerateCommand extends Command {
     let tasks = new Listr([
       {
         title: 'Formatting',
-        task: () => run('yarn lint:js --fix --quiet'),
+        task: () => exec('yarn lint:js --fix --quiet'),
       }
     ]);
 
