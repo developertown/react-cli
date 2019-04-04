@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, Store, compose } from 'redux';
-import { setCurrentOrganizationId } from '@lib/current-organization';
 
 import { reducers } from './reducers';
 import { middleware, setup as setupMiddleware } from './middleware';
@@ -61,10 +60,6 @@ export default class ReduxProvider extends React.Component<IProps> {
         },
         ui: currentState.ui,
       };
-
-      // NOTE: that for non-react/redux things (jquery, fetch, etc),
-      //       we need to manually set this specific key
-      setCurrentOrganizationId(currentState.data.currentOrganizationId);
 
       try {
         localStorage.setItem('reduxState', JSON.stringify(toPersist));
