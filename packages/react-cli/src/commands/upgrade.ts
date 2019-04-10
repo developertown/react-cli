@@ -1,11 +1,9 @@
 import { Command } from '@oclif/command';
 import { ensureDependencies } from '../tasks/ensure-dependiencies';
 import { runEmber } from '../tasks/run-ember';
-import { exec } from '../utils/shell';
-import Listr from 'listr';
-import { blueprint } from '../utils/info';
+import { appBlueprint } from '../utils/info';
 
-export class GenerateCommand extends Command {
+export class UpgradeCommand extends Command {
   static description = 'Upgrades an existing project';
 
   static examples = [
@@ -15,6 +13,6 @@ export class GenerateCommand extends Command {
   async run() {
     await ensureDependencies();
 
-    await runEmber(`init --blueprint ${blueprint}`, { stdio: 'inherit', silent: undefined });
+    await runEmber(`init --blueprint ${appBlueprint}`, { stdio: 'inherit', silent: undefined });
   }
 }

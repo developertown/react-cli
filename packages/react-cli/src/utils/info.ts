@@ -1,2 +1,2 @@
-export const defaultBlueprint = '@developertown/react-app-blueprint';
-export const blueprint = process.env.REACT_APP_BLUEPRINT_PATH || defaultBlueprint;
+export const defaultAppBlueprint = '@developertown/react-app-blueprint';
+export const appBlueprint = process.env.REACT_APP_BLUEPRINT_PATH || defaultAppBlueprint;

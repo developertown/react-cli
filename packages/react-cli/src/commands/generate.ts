@@ -5,7 +5,7 @@ import { exec } from '../utils/shell';
 import Listr from 'listr';
 
 export class GenerateCommand extends Command {
-  static description = 'Generates a blueprint';
+  static description = 'Generates a route with tests, path entries, and intermediare route files if applicable';
   static aliases = ['g'];
 
   static examples = [
@@ -23,7 +23,9 @@ export class GenerateCommand extends Command {
 
     await ensureDependencies();
 
-    await runEmber(['g', args.generator, args.name].join(' '), { silent: false });
+    let generatorArgs = ['g', args.generator, args.name];
+
+    await runEmber(generatorArgs.join(' '), { silent: false });
 
     let tasks = new Listr([
       {

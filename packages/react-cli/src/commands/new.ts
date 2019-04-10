@@ -5,10 +5,10 @@ import inquirer = require('inquirer');
 import Listr from 'listr';
 import { downloadTSConfigFiles } from '../tasks/download-ts-config';
 import { exec } from '../utils/shell';
-import { blueprint } from '../utils/info';
+import { appBlueprint } from '../utils/info';
 
 const requiredOptions = [
-  `--blueprint ${blueprint}`,
+  `--blueprint ${appBlueprint}`,
   '--skip-npm',
 ];
 

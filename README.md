@@ -58,7 +58,15 @@ $ react prepare
 
 ```bash
 export REACT_APP_BLUEPRINT_PATH=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-app
+
 alias react=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-cli/bin/run
+
+
+# to develop generators
+cd $HOME/Development/Work/DeveloperTown/react-cli/packages/react-generators
+yarn link
+# cd to your project path
+yarn link "@developertown/react-generators-blueprint"
 ```
 
 ### Testing installation
@@ -71,7 +79,6 @@ notion install node 8
 
 # setup refs to local project
 export REACT_APP_BLUEPRINT_PATH=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-app
-export REACT_GENERATORS_BLUEPRINT_PATH=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-generators
 
 alias react=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-cli/bin/run
 

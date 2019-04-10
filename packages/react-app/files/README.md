@@ -41,13 +41,20 @@ Make use of the code generators for components, routes, tests, etc. try `react h
 
 ### Using a local / development version of the react-cli
 
-Set the app and generators blueprint environment variables and set an alias to the local copy of react-cli's executable file.
+Set the app environment variable and set an alias to the local copy of react-cli's executable file.
 
 This is useful for testing / implementing additional generators against production apps.
 
 ```bash
 export REACT_APP_BLUEPRINT_PATH=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-app
-export REACT_GENERATORS_BLUEPRINT_PATH=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-generators
 
 alias react=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-cli/bin/run
+
+# to develop generators
+cd $HOME/Development/Work/DeveloperTown/react-cli/packages/react-generators
+yarn link
+# cd to your project path
+yarn link "@developertown/react-generators-blueprint"
+
+
 ```
