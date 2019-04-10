@@ -5,15 +5,11 @@ import inquirer = require('inquirer');
 import Listr from 'listr';
 import { downloadTSConfigFiles } from '../tasks/download-ts-config';
 import { exec } from '../utils/shell';
+import { blueprint } from '../utils/info';
 
-const defaultBlueprint = '@developertown/react-app-blueprint';
-const blueprint = process.env.REACT_APP_BLUEPRINT_PATH || defaultBlueprint;
 const requiredOptions = [
   `--blueprint ${blueprint}`,
-  // '--yarn',
   '--skip-npm',
-  '--skip-git',
-  // '--directory tmp',
 ];
 
 export class NewCommand extends Command {
@@ -56,28 +52,34 @@ export class NewCommand extends Command {
           { name: 'redux', value: 'redux' },
         ],
       },
-      // TODO: implement this:
-      // {
-      //   type: 'list',
-      //   message: 'Select UI Framework',
-      //   name: 'style',
-      //   choices: [{ name: 'Material UI', value: 'materialUi' }],
-      // },
+      {
+        type: 'checkbox',
+        message: 'Select UI Framework',
+        name: 'style',
+        choices: [
+          { name: 'Material UI', value: 'materialUi' }
+          // TODO:
+          // - just sass?
+          //   - sass is default right now, do we want sass to be an option instead?
+          // - bootstrap?
+          // - bulma?
+          // - shoelace?
+        ],
+      },
     ]);
 
     let options = [
       args.projectName || answers.name,
       ...answers.functionality.map((feat: string) => `--${feat}`),
+      ...answers.style.map((styleFramework: string) => `--${styleFramework}`)
     ];
 
-    if (answers.style) {
-      options.push(`--${answers.style}`);
-    }
+    let argsForEmber = ['new', ...options, ...requiredOptions].join(' ');
 
     let tasks = new Listr([
       {
         title: 'Creating react project',
-        task: () => runEmber(['new', ...options, ...requiredOptions].join(' ')),
+        task: () => runEmber(argsForEmber),
       },
       {
         title: 'Formatting package.json',

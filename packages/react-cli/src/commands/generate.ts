@@ -23,7 +23,7 @@ export class GenerateCommand extends Command {
 
     await ensureDependencies();
 
-    await runEmber(['g', args.generator, args.name].join(' '), true);
+    await runEmber(['g', args.generator, args.name].join(' '), { silent: false });
 
     let tasks = new Listr([
       {
