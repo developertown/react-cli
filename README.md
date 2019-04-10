@@ -71,6 +71,8 @@ notion install node 8
 
 # setup refs to local project
 export REACT_APP_BLUEPRINT_PATH=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-app
+export REACT_GENERATORS_BLUEPRINT_PATH=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-generators
+
 alias react=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-cli/bin/run
 
 # create new app

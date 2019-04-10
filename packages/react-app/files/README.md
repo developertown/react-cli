@@ -38,3 +38,16 @@ Make use of the code generators for components, routes, tests, etc. try `react h
 * `yarn lint:js` - show linting errors and warning in js/ts files
 * `yarn lint:js --fix --quiet` - fix errors and don't print warnings in js/ts files
 
+
+### Using a local / development version of the react-cli
+
+Set the app and generators blueprint environment variables and set an alias to the local copy of react-cli's executable file.
+
+This is useful for testing / implementing additional generators against production apps.
+
+```bash
+export REACT_APP_BLUEPRINT_PATH=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-app
+export REACT_GENERATORS_BLUEPRINT_PATH=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-generators
+
+alias react=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-cli/bin/run
+```
