@@ -7,4 +7,4 @@ export default function NotFoundRoute() {
       <div className='content'>oops. or something.. idk</div>
     </div>
   );
-};
+}

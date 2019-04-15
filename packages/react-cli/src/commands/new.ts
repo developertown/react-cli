@@ -5,10 +5,10 @@ import inquirer = require('inquirer');
 import Listr from 'listr';
 import { downloadTSConfigFiles } from '../tasks/download-ts-config';
 import { exec } from '../utils/shell';
-import { blueprint } from '../utils/info';
+import { appBlueprint } from '../utils/info';
 
 const requiredOptions = [
-  `--blueprint ${blueprint}`,
+  `--blueprint ${appBlueprint}`,
   '--skip-npm',
 ];
 
@@ -80,10 +80,6 @@ export class NewCommand extends Command {
       {
         title: 'Creating react project',
         task: () => runEmber(argsForEmber),
-      },
-      {
-        title: 'Formatting package.json',
-        task: () => exec(`cd ${options[0]} && npx format-package -w`)
       },
       {
         title: 'Downloading shared config for DeveloperTown',

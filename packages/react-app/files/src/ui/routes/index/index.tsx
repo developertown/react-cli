@@ -1,3 +1,3 @@
 export default function IndexRoute() {
-  return 'the index route!'
+  return 'the index route!';
 }

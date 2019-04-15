@@ -10,7 +10,7 @@ module.exports = {
   description: 'Generates a component.',
 
   availableOptions: [
-    { name: 'path', type: String, default: path.join('src', 'ui', 'components') },
+    { name: 'path', type: String, default: path.join('components') },
   ],
 
   filesPath: function() {
@@ -22,7 +22,7 @@ module.exports = {
   fileMapTokens: function() {
     return {
       __root__: function(options) {
-        return '.';
+        return path.join('src', 'ui');
       },
       __path__: function(options) {
         return path.join(options.locals.path, options.dasherizedModuleName);
