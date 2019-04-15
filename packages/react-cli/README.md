@@ -19,7 +19,7 @@ $ npm install -g @developertown/react-cli
 $ react COMMAND
 running command...
 $ react (-v|--version|version)
-@developertown/react-cli/0.8.0 linux-x64 node-v8.15.1
+@developertown/react-cli/0.9.0 linux-x64 node-v10.15.1
 $ react --help [COMMAND]
 USAGE
   $ react COMMAND
@@ -32,10 +32,11 @@ USAGE
 * [`react help [COMMAND]`](#react-help-command)
 * [`react new [PROJECTNAME]`](#react-new-projectname)
 * [`react prepare`](#react-prepare)
+* [`react upgrade`](#react-upgrade)
 
 ## `react generate GENERATOR NAME`
 
-Generates a blueprint
+Generates a route with tests, path entries, and intermediare route files if applicable
 
 ```
 USAGE
@@ -52,7 +53,7 @@ EXAMPLES
   $ react generate route path/to/route-name
 ```
 
-_See code: [src/commands/generate.ts](https://github.com/developertown/react-cli/blob/v0.8.0/src/commands/generate.ts)_
+_See code: [src/commands/generate.ts](https://github.com/developertown/react-cli/blob/v0.9.0/src/commands/generate.ts)_
 
 ## `react help [COMMAND]`
 
@@ -85,7 +86,7 @@ EXAMPLES
   $ react new project-name
 ```
 
-_See code: [src/commands/new.ts](https://github.com/developertown/react-cli/blob/v0.8.0/src/commands/new.ts)_
+_See code: [src/commands/new.ts](https://github.com/developertown/react-cli/blob/v0.9.0/src/commands/new.ts)_
 
 ## `react prepare`
 
@@ -99,5 +100,19 @@ EXAMPLE
   $ react prepare
 ```
 
-_See code: [src/commands/prepare.ts](https://github.com/developertown/react-cli/blob/v0.8.0/src/commands/prepare.ts)_
+_See code: [src/commands/prepare.ts](https://github.com/developertown/react-cli/blob/v0.9.0/src/commands/prepare.ts)_
+
+## `react upgrade`
+
+Upgrades an existing project
+
+```
+USAGE
+  $ react upgrade
+
+EXAMPLE
+  $ react upgrade
+```
+
+_See code: [src/commands/upgrade.ts](https://github.com/developertown/react-cli/blob/v0.9.0/src/commands/upgrade.ts)_
 <!-- commandsstop -->
