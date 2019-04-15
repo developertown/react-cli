@@ -199,5 +199,9 @@
   "resolutions": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
+  },
+  "toolchain": {
+    "node": "10.15.3",
+    "yarn": "1.15.2"
   }
 }
