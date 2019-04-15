@@ -12,11 +12,11 @@ export class FetchConfigsCommand extends Command {
   async run() {
     await ensureDependencies();
 
-    let path = './';
+    let currentWorkingDirectory = './';
     let tasks = new Listr([
       {
         title: 'Downloading shared config for DeveloperTown',
-        task: () => downloadTSConfigFiles(path),
+        task: () => downloadTSConfigFiles(currentWorkingDirectory),
       },
       {
         title: 'Installing Dependencies',
