@@ -87,3 +87,7 @@ react new my-app
 
 # yarn and ember-cli should now be installed
 ```
+
+## Publishing
+
+TODO: setup lerna
