@@ -1,6 +1,6 @@
 import { Command } from '@oclif/command';
 import { ensureDependencies } from '../tasks/ensure-dependiencies';
-import { runEmber } from '../tasks/run-ember';
+import { runEmber, runEmberInteractively } from '../tasks/run-ember';
 import { appBlueprint } from '../utils/info';
 
 export class UpgradeCommand extends Command {
@@ -13,6 +13,6 @@ export class UpgradeCommand extends Command {
   async run() {
     await ensureDependencies();
 
-    await runEmber(`init --blueprint ${appBlueprint}`, { stdio: 'inherit', silent: undefined });
+    await runEmberInteractively(`init --blueprint ${appBlueprint}`);
   }
 }

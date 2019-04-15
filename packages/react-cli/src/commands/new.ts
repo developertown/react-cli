@@ -82,10 +82,6 @@ export class NewCommand extends Command {
         task: () => runEmber(argsForEmber),
       },
       {
-        title: 'Formatting package.json',
-        task: () => exec(`cd ${options[0]} && npx format-package -w`)
-      },
-      {
         title: 'Downloading shared config for DeveloperTown',
         task: () => downloadTSConfigFiles(options[0]),
       },

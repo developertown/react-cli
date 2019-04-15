@@ -10,9 +10,9 @@
     "tsc": "./node_modules/.bin/tsc",
 
     <% if (testing) { %>
-      "karma": "./node_modules/.bin/karma",
-      "test:watch:detached": "NODE_OPTIONS=\"--max-old-space-size=4096\" DETACHED=true yarn karma:start",
-      "test:ci": "CI=true yarn karma:start --single-run",
+    "karma": "./node_modules/.bin/karma",
+    "test:watch:detached": "NODE_OPTIONS=\"--max-old-space-size=4096\" DETACHED=true yarn karma:start",
+    "test:ci": "CI=true yarn karma:start --single-run",
     <% } %>
 
     "webpack": "./node_modules/.bin/webpack-cli",
@@ -28,47 +28,47 @@
   },
   "dependencies": {
     <% if (dotnetBackend) { %>
-      "@aspnet/signalr": "^1.0.4",
-      "@ssv/signalr-client": "^1.0.0",
+    "@aspnet/signalr": "^1.0.4",
+    "@ssv/signalr-client": "^1.0.0",
     <% } %>
 
     <% if (materialUi) { %>
-      "@material-ui/core": "^3.1.0",
-      "@material-ui/icons": "^3.0.1",
+    "@material-ui/core": "^3.1.0",
+    "@material-ui/icons": "^3.0.1",
     <% } %>
 
     <% if (jsonapi)  { %>
-      "@orbit/coordinator": "^0.15.14",
-      "@orbit/core": "^0.15.14",
-      "@orbit/data": "^0.15.14",
-      "@orbit/indexeddb": "^0.15.14",
-      "@orbit/indexeddb-bucket": "^0.15.14",
-      "@orbit/jsonapi": "^0.15.15",
-      "@orbit/local-storage-bucket": "^0.15.14",
-      "@orbit/store": "^0.15.14",
-      "react-orbitjs": "github:DeveloperTown/react-orbitjs#286b0d082a68f6d255745a9a6f054847e0de0a4c",
+    "@orbit/coordinator": "^0.15.14",
+    "@orbit/core": "^0.15.14",
+    "@orbit/data": "^0.15.14",
+    "@orbit/indexeddb": "^0.15.14",
+    "@orbit/indexeddb-bucket": "^0.15.14",
+    "@orbit/jsonapi": "^0.15.15",
+    "@orbit/local-storage-bucket": "^0.15.14",
+    "@orbit/store": "^0.15.14",
+    "react-orbitjs": "github:DeveloperTown/react-orbitjs#286b0d082a68f6d255745a9a6f054847e0de0a4c",
     <% } %>
 
     <% if (auth0) { %>
-      "auth0-js": "^9.6.1",
-      "auth0-lock": "^11.7.2",
-      "jwt-decode": "^2.2.0",
+    "auth0-js": "^9.6.1",
+    "auth0-lock": "^11.7.2",
+    "jwt-decode": "^2.2.0",
     <% } %>
 
     <% if (i18n) { %>
-      "i18next": "^15.0.0",
-      "i18next-browser-languagedetector": "^3.0.0",
-      "i18next-icu": "^1.0.1",
-      "i18next-service-backend": "^1.0.5",
-      "i18next-xhr-backend": "^2.0.0",
-      "react-i18next": "^10.0.2",
+    "i18next": "^15.0.0",
+    "i18next-browser-languagedetector": "^3.0.0",
+    "i18next-icu": "^1.0.1",
+    "i18next-service-backend": "^1.0.5",
+    "i18next-xhr-backend": "^2.0.0",
+    "react-i18next": "^10.0.2",
     <% } %>
 
     <% if (redux) { %>
-      "react-redux": "^6.0.0",
-      "redux": "^4.0.0",
-      "typescript-fsa": "^3.0.0-beta-2",
-      "redux-saga": "^1.0.0",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.0",
+    "typescript-fsa": "^3.0.0-beta-2",
+    "redux-saga": "^1.0.0",
     <% } %>
 
     "md5-hash": "^1.0.1",
@@ -94,57 +94,57 @@
     "@babel/preset-typescript": "^7.1.0",
 
     <% if (auth0) { %>
-      "@types/auth0-js": "^8.11.2",
-      "@types/auth0-lock": "^11.4.4",
-      "@types/jwt-decode": "^2.2.1",
+    "@types/auth0-js": "^8.11.2",
+    "@types/auth0-lock": "^11.4.4",
+    "@types/jwt-decode": "^2.2.1",
     <% } %>
 
     <% if (i18n) { %>
-      "@types/i18next-browser-languagedetector": "^2.0.1",
-      "@types/i18next-xhr-backend": "^1.4.1",
-      "@types/react-i18next": "^8.1.0",
+    "@types/i18next-browser-languagedetector": "^2.0.1",
+    "@types/i18next-xhr-backend": "^1.4.1",
+    "@types/react-i18next": "^8.1.0",
     <% } %>
 
     <% if (redux) { %>
-      "@types/react-redux": "^7.0.0",
+    "@types/react-redux": "^7.0.0",
     <% } %>
 
     <% if (testing) { %>
-      "@types/chai": "^4.1.3",
-      "@types/chai-dom": "^0.0.7",
-      "@types/mocha": "^5.2.1",
-      "@types/sinon": "^7.0.0",
-      "@types/sinon-chai": "^3.2.0",
+    "@types/chai": "^4.1.3",
+    "@types/chai-dom": "^0.0.7",
+    "@types/mocha": "^5.2.1",
+    "@types/sinon": "^7.0.0",
+    "@types/sinon-chai": "^3.2.0",
 
-      "@bigtest/interactor": "0.9.2",
-      "@bigtest/mirage": "^0.0.1",
-      "@bigtest/mocha": "^0.5.0",
-      "@bigtest/react": "^0.1.1",
-      "@pollyjs/adapter-fetch": "^1.0.0",
-      "@pollyjs/adapter-xhr": "^2.0.0",
-      "@pollyjs/cli": "^2.0.0",
-      "@pollyjs/core": "^1.0.0",
-      "@pollyjs/persister-rest": "^2.0.0",
-      "chai": "^4.1.2",
-      "chai-dom": "^1.8.0",
-      "chai-subset": "^1.6.0",
-      "istanbul-instrumenter-loader": "^3.0.1",
-      "karma": "^4.0.0",
-      "karma-chai": "^0.1.0",
-      "karma-chrome-launcher": "^2.2.0",
-      "karma-coverage-istanbul-reporter": "^2.0.4",
-      "karma-firefox-launcher": "^1.1.0",
-      "karma-iframes": "^1.2.0",
-      "karma-mocha": "^1.3.0",
-      "karma-mocha-reporter": "^2.2.5",
-      "karma-parallel": "^0.3.0",
-      "karma-typescript": "^4.0.0",
-      "karma-webpack": "^3.0.0",
-      "karma-webpack-grep": "^1.0.1",
-      "mocha": "^5.2.0",
-      "react-test-renderer": "^16.4.0",
-      "sinon": "7.2.3",
-      "sinon-chai": "^3.2.0",
+    "@bigtest/interactor": "0.9.2",
+    "@bigtest/mirage": "^0.0.1",
+    "@bigtest/mocha": "^0.5.0",
+    "@bigtest/react": "^0.1.1",
+    "@pollyjs/adapter-fetch": "^1.0.0",
+    "@pollyjs/adapter-xhr": "^2.0.0",
+    "@pollyjs/cli": "^2.0.0",
+    "@pollyjs/core": "^1.0.0",
+    "@pollyjs/persister-rest": "^2.0.0",
+    "chai": "^4.1.2",
+    "chai-dom": "^1.8.0",
+    "chai-subset": "^1.6.0",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "karma": "^4.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage-istanbul-reporter": "^2.0.4",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-iframes": "^1.2.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-parallel": "^0.3.0",
+    "karma-typescript": "^4.0.0",
+    "karma-webpack": "^3.0.0",
+    "karma-webpack-grep": "^1.0.1",
+    "mocha": "^5.2.0",
+    "react-test-renderer": "^16.4.0",
+    "sinon": "7.2.3",
+    "sinon-chai": "^3.2.0",
     <% } %>
 
 

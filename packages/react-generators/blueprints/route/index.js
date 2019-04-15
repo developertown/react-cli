@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const stringUtil = require('ember-cli-string-utils');
+const routeUtls = require('./route-manipulator');
 
 module.exports = {
   description: 'Generates a route and a template, and registers the route with the router.',
@@ -56,11 +57,13 @@ module.exports = {
   },
 
   afterInstall: function(options) {
-    updateRouter.call(this, 'add', options);
+    // TODO: implement this
+    // updateRouter.call(this, 'add', options);
   },
 
   afterUninstall: function(options) {
-    updateRouter.call(this, 'remove', options);
+    // TODO: implement this
+    // updateRouter.call(this, 'remove', options);
   },
 };
 
@@ -92,25 +95,21 @@ function pathsLocation(options) {
 
 function writePaths(action, name, options) {
   let pathsFile = pathsLocation(options);
-  let topLevelPathsPath = path.join('src', 'ui', 'routes', 'paths.ts');
 
 
   let pathsSource = fs.readFileSync(pathsFile, 'utf-8');
 
-  // update router
-  // update paths
-
-  // fs.writeFileSync(routerPath, newRoutes.code());
-  // fs.writeFileSync(routerPath, newRoutes.code());
+  routeUtls.addPathEntryToPathsFile(pathsFile, name);
 }
 
 function writeRoute(action, name, options) {
   let isNested = name.includes('/');
   let routerPath = path.join('src', 'ui', 'routes', 'root.tsx');
 
+  let componentPath = path.join('src', 'ui', 'routes',  stringUtil.dasherize(name));
   let segments = name.split('/');
 
-  let routerSource = fs.readFileSync(routerPath, 'utf-8');
+  routeUtls.addRouteToDirectoryFile(routerPath, name, componentPath);
 
   // update router
 
