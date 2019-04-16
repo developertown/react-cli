@@ -12,8 +12,8 @@ export class FetchConfigsCommand extends Command {
   async run() {
     await ensureDependencies();
 
-    let currentWorkingDirectory = './';
-    let tasks = new Listr([
+    const currentWorkingDirectory = './';
+    const tasks = new Listr([
       {
         title: 'Downloading shared config for DeveloperTown',
         task: () => downloadTSConfigFiles(currentWorkingDirectory),
