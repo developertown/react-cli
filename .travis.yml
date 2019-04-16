@@ -45,7 +45,6 @@ jobs:
       <<: *lint
       env:
       - PROJECT=$CLI
-      - PROJECT=$ADDON_GENERATORS
 
     - name: "Lint JS/TS (generators)"
       <<: *lint
@@ -54,4 +53,3 @@ jobs:
 
     - stage: "App Generation Smoke Test"
       script: echo "Need non-interactive mode"
-      env: ISOLATED=true
