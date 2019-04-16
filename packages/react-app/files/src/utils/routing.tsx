@@ -70,7 +70,6 @@ export function route<TNested extends NestedRoutes = {}>(
 
   if (subRoutes) {
     Object.keys(subRoutes).forEach((key) => {
-      console.log(path, key);
       let nestedEntry = subRoutes[key];
 
       routeEntry[key] = nestedEntry;
