@@ -13,9 +13,9 @@ env:
   global:
     # See https://git.io/vdao3 for details.
     - JOBS=1
-    - APP=packages/react-app
-    - CLI=packages/react-cli
-    - ADDON_GENERATORS=packages/react-generators
+    - APP=./packages/react-app
+    - CLI=./packages/react-cli
+    - ADDON_GENERATORS=./packages/react-generators
 
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
@@ -27,8 +27,8 @@ lint: &lint
     - ls -la
     - ls -la packages/
     - ls -la $PROJECT
-    - cd $PROJECT && yarn install --non-interactive
-    - cd $PROJECT && yarn lint:js
+    - cd "$PROJECT" && yarn install --non-interactive
+    - cd "$PROJECT" && yarn lint:js
 
 
 jobs:
