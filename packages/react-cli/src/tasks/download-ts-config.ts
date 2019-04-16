@@ -10,19 +10,20 @@ const files = [
   'babelrc.config.js',
 ];
 
-const configPath = 'https://raw.githubusercontent.com/developertown/config-files/master/TypeScript/';
+const configPath =
+  'https://raw.githubusercontent.com/developertown/config-files/master/TypeScript/';
 
 export function downloadTSConfigFiles(path: string) {
-  let taskFns = files.map(file => {
+  let taskFns = files.map((file) => {
     let task = async () => {
       const res = await fetch(`${configPath}${file}`);
       await new Promise((resolve, reject) => {
         const fileStream = fs.createWriteStream(`${path}/${file}`);
         res.body.pipe(fileStream);
-        res.body.on("error", (err) => {
+        res.body.on('error', (err) => {
           reject(err);
         });
-        fileStream.on("finish", function() {
+        fileStream.on('finish', function() {
           resolve();
         });
       });
@@ -30,7 +31,7 @@ export function downloadTSConfigFiles(path: string) {
 
     return {
       title: file,
-      task
+      task,
     };
   });
 

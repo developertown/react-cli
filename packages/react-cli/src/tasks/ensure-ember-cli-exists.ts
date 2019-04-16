@@ -10,13 +10,13 @@ export async function ensureEmberCliExists() {
     let command = 'npm install -g ember-cli';
 
     if (hasNotion()) {
-      command = 'notion install ember-cli'
+      command = 'notion install ember-cli';
     }
 
     let tasks = new Listr([
       {
         title: `Installing ember-cli: '${command}'`,
-        task: () => exec(command)
+        task: () => exec(command),
       },
     ]);
 
