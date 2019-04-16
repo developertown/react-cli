@@ -27,8 +27,8 @@ lint: &lint
     - ls -la
     - ls -la packages/
     - ls -la $PROJECT
-    - cd "$PROJECT" && yarn install --non-interactive
-    - cd "$PROJECT" && yarn lint:js
+    - scripts/install.sh
+    - scripts/lint.sh
 
 
 jobs:
