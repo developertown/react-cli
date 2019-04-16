@@ -24,6 +24,9 @@ before_install:
 
 lint: &lint
   script:
+    - ls -la
+    - ls -la packages/
+    - ls -la $PROJECT
     - cd $PROJECT && yarn install --non-interactive
     - cd $PROJECT && yarn lint:js
 
