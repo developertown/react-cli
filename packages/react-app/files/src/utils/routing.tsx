@@ -61,7 +61,7 @@ class Route {
   }
 }
 
-export function route<TNested extends NestedRoutes = undefined>(
+export function route<TNested extends NestedRoutes = {}>(
   path = '',
   nestedRoutes?: TNested
 ): Route & TNested {
