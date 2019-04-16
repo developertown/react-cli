@@ -37,10 +37,6 @@ before_install:
 install:
   - cd $PROJECT && yarn install --non-interactive
 
-lint: &lint
-- name: "Lint JS/TS"
-  script: yarn lint:js
-
 jobs:
   fail_fast: true
 
