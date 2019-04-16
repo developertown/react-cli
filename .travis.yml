@@ -22,19 +22,32 @@ before_install:
   - export PATH=$HOME/.yarn/bin:$PATH
 
 
+lint: &lint
+  script:
+    - echo "Project: $PROJECT"
+    - cd $PROJECT && yarn install --non-interactive
+    - cd $PROJECT && yarn lint:js
+
+
 jobs:
   fail_fast: true
 
   include:
     - stage: "Quality"
-      name: "Lint JS/TS"
-      script:
-        - echo "Project: $PROJECT"
-        - cd $PROJECT && yarn install --non-interactive
-        - cd $PROJECT && yarn lint:js
+      <<: *lint
+      name: "Lint JS/TS (app)"
       env:
       - PROJECT=$APP
+
+    - name: "Lint JS/TS (cli)"
+      <<: *lint
+      env:
       - PROJECT=$CLI
+      - PROJECT=$ADDON_GENERATORS
+
+    - name: "Lint JS/TS (generators)"
+      <<: *lint
+      env:
       - PROJECT=$ADDON_GENERATORS
 
     - stage: "App Generation Smoke Test"
