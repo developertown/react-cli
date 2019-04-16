@@ -24,7 +24,6 @@ before_install:
 
 lint: &lint
   script:
-    - echo "Project: $PROJECT"
     - cd $PROJECT && yarn install --non-interactive
     - cd $PROJECT && yarn lint:js
 
