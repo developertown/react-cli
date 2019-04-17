@@ -13,16 +13,24 @@ const files = [
 const configPath =
   'https://raw.githubusercontent.com/developertown/config-files/master/TypeScript/';
 
-export function downloadTSConfigFiles(path: string) {
+/**
+ *
+ * @param path relative to the current working directory
+ */
+export function downloadTSConfigFiles(path = './') {
   let taskFns = files.map((file) => {
     let task = async () => {
       const res = await fetch(`${configPath}${file}`);
+
       await new Promise((resolve, reject) => {
         const fileStream = fs.createWriteStream(`${path}/${file}`);
+
         res.body.pipe(fileStream);
+
         res.body.on('error', (err) => {
           reject(err);
         });
+
         fileStream.on('finish', function() {
           resolve();
         });
