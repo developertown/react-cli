@@ -39,7 +39,7 @@ export class GenerateCommand extends Command {
     let generatorArgs = ['g', args.generator, args.name];
 
     if (flags.route) {
-      generatorArgs.push(`--path=${flags.route}/-components`);
+      generatorArgs.push(`--path=routes/${flags.route}/-components`);
     }
 
     await runEmberInteractively(generatorArgs.join(' '));
