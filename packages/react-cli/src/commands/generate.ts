@@ -1,4 +1,4 @@
-import { Command } from '@oclif/command';
+import { Command, flags } from '@oclif/command';
 import { ensureDependencies } from '../tasks/ensure-dependiencies';
 import { runEmber, runEmberInteractively } from '../tasks/run-ember';
 import { exec } from '../utils/shell';
@@ -15,16 +15,36 @@ export class GenerateCommand extends Command {
     '$ react generate component path/to/component-name',
     '$ react generate route route-name',
     '$ react generate route path/to/route-name',
+
+    '$ react generate component component-name --in=routes/route-name/-components/'
   ];
 
-  static args = [{ name: 'generator', required: true }, { name: 'name', required: true }];
+  static args = [
+    { name: 'generator', required: true },
+    { name: 'name', required: true },
+  ];
+
+  static flags = {
+    in: flags.string({
+      description: 'root directory to place the component in, relative to the `src/ui/` directory',
+      hidden: false,
+      multiple: false,
+      env: 'COMPONENT_ROOT',
+      default: 'components',
+      required: false,
+    }),
+  };
 
   async run() {
-    const { args } = this.parse(GenerateCommand);
+    const { args, flags } = this.parse(GenerateCommand);
 
     await ensureDependencies();
 
     let generatorArgs = ['g', args.generator, args.name];
+
+    if (flags.in) {
+      generatorArgs.push(`--path=${flags.in}`);
+    }
 
     await runEmberInteractively(generatorArgs.join(' '));
 
