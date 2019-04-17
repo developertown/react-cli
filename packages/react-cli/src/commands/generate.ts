@@ -16,7 +16,7 @@ export class GenerateCommand extends Command {
     '$ react generate route route-name',
     '$ react generate route path/to/route-name',
 
-    '$ react generate component component-name --in=routes/route-name/-components/'
+    '$ react generate component component-name --route=dashboard/posts'
   ];
 
   static args = [
@@ -25,12 +25,10 @@ export class GenerateCommand extends Command {
   ];
 
   static flags = {
-    in: flags.string({
-      description: 'root directory to place the component in, relative to the `src/ui/` directory',
+    route: flags.string({
+      description: 'directory of a route to place the component in. Will live in `route-path/-components/`',
       hidden: false,
       multiple: false,
-      env: 'COMPONENT_ROOT',
-      default: 'components',
       required: false,
     }),
   };
@@ -42,19 +40,10 @@ export class GenerateCommand extends Command {
 
     let generatorArgs = ['g', args.generator, args.name];
 
-    if (flags.in) {
-      generatorArgs.push(`--path=${flags.in}`);
+    if (flags.route) {
+      generatorArgs.push(`--path=${flags.route}/-components`);
     }
 
     await runEmberInteractively(generatorArgs.join(' '));
-
-    let tasks = new Listr([
-      {
-        title: 'Formatting',
-        task: () => exec('yarn lint:js --fix --quiet'),
-      },
-    ]);
-
-    await tasks.run();
   }
 }
