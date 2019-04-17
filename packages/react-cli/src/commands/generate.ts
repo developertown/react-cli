@@ -16,17 +16,15 @@ export class GenerateCommand extends Command {
     '$ react generate route route-name',
     '$ react generate route path/to/route-name',
 
-    '$ react generate component component-name --route=dashboard/posts'
+    '$ react generate component component-name --route=dashboard/posts',
   ];
 
-  static args = [
-    { name: 'generator', required: true },
-    { name: 'name', required: true },
-  ];
+  static args = [{ name: 'generator', required: true }, { name: 'name', required: true }];
 
   static flags = {
     route: flags.string({
-      description: 'directory of a route to place the component in. Will live in `route-path/-components/`',
+      description:
+        'directory of a route to place the component in. Will live in `route-path/-components/`',
       hidden: false,
       multiple: false,
       required: false,
