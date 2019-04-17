@@ -19,7 +19,7 @@ $ npm install -g @developertown/react-cli
 $ react COMMAND
 running command...
 $ react (-v|--version|version)
-@developertown/react-cli/0.9.0 linux-x64 node-v10.15.1
+@developertown/react-cli/0.10.0 linux-x64 node-v10.15.3
 $ react --help [COMMAND]
 USAGE
   $ react COMMAND
@@ -42,18 +42,23 @@ Generates a route with tests, path entries, and intermediare route files if appl
 USAGE
   $ react generate GENERATOR NAME
 
+OPTIONS
+  --route=route  directory of a route to place the component in. Will live in `route-path/-components/`
+
 ALIASES
   $ react g
 
 EXAMPLES
-  $ react g component component-name
   $ react generate component component-name
-  $ react generate component path/to/component-name
-  $ react generate route route-name
-  $ react generate route path/to/route-name
+  $ react g component component-name
+  $ react g component path/to/component-name
+  $ react g component component-name --route=dashboard/posts
+
+  $ react g route route-name
+  $ react g route path/to/route-name
 ```
 
-_See code: [src/commands/generate.ts](https://github.com/developertown/react-cli/blob/v0.9.0/src/commands/generate.ts)_
+_See code: [src/commands/generate.ts](https://github.com/developertown/react-cli/blob/v0.10.0/src/commands/generate.ts)_
 
 ## `react help [COMMAND]`
 
@@ -86,7 +91,7 @@ EXAMPLES
   $ react new project-name
 ```
 
-_See code: [src/commands/new.ts](https://github.com/developertown/react-cli/blob/v0.9.0/src/commands/new.ts)_
+_See code: [src/commands/new.ts](https://github.com/developertown/react-cli/blob/v0.10.0/src/commands/new.ts)_
 
 ## `react prepare`
 
@@ -100,7 +105,7 @@ EXAMPLE
   $ react prepare
 ```
 
-_See code: [src/commands/prepare.ts](https://github.com/developertown/react-cli/blob/v0.9.0/src/commands/prepare.ts)_
+_See code: [src/commands/prepare.ts](https://github.com/developertown/react-cli/blob/v0.10.0/src/commands/prepare.ts)_
 
 ## `react upgrade`
 
@@ -114,5 +119,5 @@ EXAMPLE
   $ react upgrade
 ```
 
-_See code: [src/commands/upgrade.ts](https://github.com/developertown/react-cli/blob/v0.9.0/src/commands/upgrade.ts)_
+_See code: [src/commands/upgrade.ts](https://github.com/developertown/react-cli/blob/v0.10.0/src/commands/upgrade.ts)_
 <!-- commandsstop -->
