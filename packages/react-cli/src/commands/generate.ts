@@ -10,13 +10,13 @@ export class GenerateCommand extends Command {
   static aliases = ['g'];
 
   static examples = [
-    '$ react g component component-name',
     '$ react generate component component-name',
-    '$ react generate component path/to/component-name',
-    '$ react generate route route-name',
-    '$ react generate route path/to/route-name',
-
-    '$ react generate component component-name --route=dashboard/posts',
+    '$ react g component component-name',
+    '$ react g component path/to/component-name',
+    '$ react g component component-name --route=dashboard/posts',
+    '',
+    '$ react g route route-name',
+    '$ react g route path/to/route-name',
   ];
 
   static args = [{ name: 'generator', required: true }, { name: 'name', required: true }];
