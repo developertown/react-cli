@@ -3,6 +3,7 @@ import { ensureDependencies } from '../tasks/ensure-dependiencies';
 import { runEmber, runEmberInteractively } from '../tasks/run-ember';
 import { exec } from '../utils/shell';
 import Listr from 'listr';
+import inquirer = require('inquirer');
 
 export class GenerateCommand extends Command {
   static description =
@@ -14,6 +15,7 @@ export class GenerateCommand extends Command {
     '$ react g component component-name',
     '$ react g component path/to/component-name',
     '$ react g component component-name --route=dashboard/posts',
+    '$ react g component component-name --Button',
     '',
     '$ react g route route-name',
     '$ react g route path/to/route-name',
@@ -29,6 +31,9 @@ export class GenerateCommand extends Command {
       multiple: false,
       required: false,
     }),
+    button: flags.string({
+      name: 'Button'
+    })
   };
 
   async run() {
@@ -42,6 +47,23 @@ export class GenerateCommand extends Command {
       generatorArgs.push(`--path=${flags.route}/-components`);
     }
 
-    await runEmberInteractively(generatorArgs.join(' '));
+    const answers: any = await inquirer.prompt([
+      {
+        type: 'checkbox',
+        message: 'Select Material Components',
+        name: 'materialComponent',
+        choices: [
+          { name: 'Button', value: 'Button' },
+          { name: 'TextField', value: 'TextField' },
+          { name: 'Table', value: 'Table' },
+          { name: 'Card', value: 'Card' }
+        ]
+      }
+    ])
+
+    let options = [
+      ...answers.materialComponent.map((component: string) => `--${component}`)
+    ]
+    await runEmberInteractively([...generatorArgs, ...options].join(' '));
   }
 }
