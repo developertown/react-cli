@@ -15,7 +15,6 @@ export class GenerateCommand extends Command {
     '$ react g component component-name',
     '$ react g component path/to/component-name',
     '$ react g component component-name --route=dashboard/posts',
-    '$ react g component component-name --Button',
     '',
     '$ react g route route-name',
     '$ react g route path/to/route-name',
