@@ -1,13 +1,11 @@
 'use strict';
 
 const path = require('path');
-const stringUtil = require('ember-cli-string-utils');
-const pathUtil = require('ember-cli-path-utils');
 const normalizeEntityName = require('ember-cli-normalize-entity-name');
 const EOL = require('os').EOL;
 
 module.exports = {
-  description: 'Generates a component.',
+  description: 'Generates a component with material components.',
 
   availableOptions: [
     { name: 'path', type: String, default: path.join('components') },
@@ -21,7 +19,7 @@ module.exports = {
 
   fileMapTokens: function() {
     return {
-      __root__: function(options) {
+      __root__: function() {
         return path.join('src', 'ui');
       },
       __path__: function(options) {
@@ -40,6 +38,11 @@ module.exports = {
     return {
       contents: contents,
       path: options.path,
+      button: options.button,
+      textField: options.textField,
+      table: options.table,
+      card: options.card
     };
   },
 };
+

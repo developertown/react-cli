@@ -2,7 +2,6 @@ import { exec } from '../utils/shell';
 import { execSync } from 'child_process';
 
 export async function runEmber(command: string, execOptions = {}) {
-  console.log(command)
   return await exec(`ember ${command}`, execOptions);
 }
 
