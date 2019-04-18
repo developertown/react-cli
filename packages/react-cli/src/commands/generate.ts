@@ -3,7 +3,7 @@ import { ensureDependencies } from '../tasks/ensure-dependiencies';
 import { runEmber, runEmberInteractively } from '../tasks/run-ember';
 import { exec } from '../utils/shell';
 import Listr from 'listr';
-import inquirer = require('inquirer');
+import inquirer from 'inquirer';
 
 export class GenerateCommand extends Command {
   static description =
@@ -18,6 +18,8 @@ export class GenerateCommand extends Command {
     '',
     '$ react g route route-name',
     '$ react g route path/to/route-name',
+    '',
+    '$ react g material component-name'
   ];
 
   static args = [{ name: 'generator', required: true }, { name: 'name', required: true }];
@@ -29,15 +31,13 @@ export class GenerateCommand extends Command {
       hidden: false,
       multiple: false,
       required: false,
-    }),
-    button: flags.string({
-      name: 'Button'
     })
   };
 
   async run() {
     const { args, flags } = this.parse(GenerateCommand);
-
+    let options = [];
+    
     await ensureDependencies();
 
     let generatorArgs = ['g', args.generator, args.name];
@@ -46,23 +46,25 @@ export class GenerateCommand extends Command {
       generatorArgs.push(`--path=routes/${flags.route}/-components`);
     }
 
-    const answers: any = await inquirer.prompt([
-      {
-        type: 'checkbox',
-        message: 'Select Material Components',
-        name: 'materialComponent',
-        choices: [
-          { name: 'Button', value: 'Button' },
-          { name: 'TextField', value: 'TextField' },
-          { name: 'Table', value: 'Table' },
-          { name: 'Card', value: 'Card' }
-        ]
-      }
-    ])
+    if(args.generator === 'material'){
+      const answers: any = await inquirer.prompt([
+        {
+          type: 'checkbox',
+          message: 'Select Material Components',
+          name: 'materialComponent',
+          choices: [
+            { name: 'Button', value: 'Button' },
+            { name: 'TextField', value: 'TextField' },
+            { name: 'Table', value: 'Table' },
+            { name: 'Card', value: 'Card' }
+          ]
+        }
+      ])
+      options = [
+        ...answers.materialComponent.map((component: string) => `--${component}`)
+      ]
+    }
 
-    let options = [
-      ...answers.materialComponent.map((component: string) => `--${component}`)
-    ]
     await runEmberInteractively([...generatorArgs, ...options].join(' '));
   }
 }
