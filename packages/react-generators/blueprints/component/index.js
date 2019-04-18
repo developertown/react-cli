@@ -1,8 +1,6 @@
 'use strict';
 
 const path = require('path');
-const stringUtil = require('ember-cli-string-utils');
-const pathUtil = require('ember-cli-path-utils');
 const normalizeEntityName = require('ember-cli-normalize-entity-name');
 const EOL = require('os').EOL;
 
@@ -40,6 +38,10 @@ module.exports = {
     return {
       contents: contents,
       path: options.path,
+      button: options.button,
+      textField: options.textField,
+      table: options.table,
+      card: options.card
     };
   },
 };
