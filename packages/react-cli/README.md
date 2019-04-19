@@ -60,6 +60,23 @@ EXAMPLES
 
 _See code: [src/commands/generate.ts](https://github.com/developertown/react-cli/blob/v0.10.1/src/commands/generate.ts)_
 
+## `react material COMPONENT-NAME
+
+Creates components with Material Components installed
+
+```
+USAGE
+  $ react generateMaterial NAME
+
+ALIASES
+  $ react material
+  $ react m
+
+EXAMPLES
+  $ react material component-name
+  $ react m path/to/component
+```
+_See Code: [src/commands/generateMaterial.ts](https://github.com/developertown/react-cli/blob/v0.10.1/src/commands/generateMaterial.ts)_
 ## `react help [COMMAND]`
 
 display help for react

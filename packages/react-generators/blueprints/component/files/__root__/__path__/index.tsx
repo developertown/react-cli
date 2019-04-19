@@ -5,8 +5,6 @@ import './styles';
 export default function <%= classifiedModuleName %>() {
   <%= contents %>
   return (
-    <>
-      A new component named: <%= classifiedModuleName %>
-    </>
+    <p>A new component named: <%= classifiedModuleName %></p>
   );
 };

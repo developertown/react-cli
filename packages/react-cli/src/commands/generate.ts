@@ -2,7 +2,6 @@ import { Command, flags } from '@oclif/command';
 import { ensureDependencies } from '../tasks/ensure-dependiencies';
 import { runEmber, runEmberInteractively } from '../tasks/run-ember';
 import { exec } from '../utils/shell';
-import Listr from 'listr';
 
 export class GenerateCommand extends Command {
   static description =
@@ -42,6 +41,6 @@ export class GenerateCommand extends Command {
       generatorArgs.push(`--path=routes/${flags.route}/-components`);
     }
 
-    await runEmberInteractively(generatorArgs.join(' '));
+    await runEmberInteractively([...generatorArgs].join(' '));
   }
 }
