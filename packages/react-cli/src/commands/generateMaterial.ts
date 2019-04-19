@@ -6,7 +6,7 @@ import inquirer = require('inquirer');
 export class GenerateMaterialCommand extends Command {
     static description = 'Creates components with Material Components installed';
 
-    static aliases = ['m'];
+    static aliases = ['material', 'm'];
     
     static examples = [
         '$ react material component-name',
