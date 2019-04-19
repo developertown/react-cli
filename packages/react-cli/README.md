@@ -19,7 +19,7 @@ $ npm install -g @developertown/react-cli
 $ react COMMAND
 running command...
 $ react (-v|--version|version)
-@developertown/react-cli/0.10.1 linux-x64 node-v10.15.3
+@developertown/react-cli/0.11.0 linux-x64 node-v10.15.1
 $ react --help [COMMAND]
 USAGE
   $ react COMMAND
@@ -28,11 +28,27 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`react fetch-configs`](#react-fetch-configs)
 * [`react generate GENERATOR NAME`](#react-generate-generator-name)
+* [`react generateMaterial NAME`](#react-generatematerial-name)
 * [`react help [COMMAND]`](#react-help-command)
 * [`react new [PROJECTNAME]`](#react-new-projectname)
 * [`react prepare`](#react-prepare)
 * [`react upgrade`](#react-upgrade)
+
+## `react fetch-configs`
+
+Fetches config files for linting and typescript projects
+
+```
+USAGE
+  $ react fetch-configs
+
+EXAMPLE
+  $ react fetch-configs
+```
+
+_See code: [src/commands/fetch-configs.ts](https://github.com/developertown/react-cli/blob/v0.11.0/src/commands/fetch-configs.ts)_
 
 ## `react generate GENERATOR NAME`
 
@@ -58,9 +74,9 @@ EXAMPLES
   $ react g route path/to/route-name
 ```
 
-_See code: [src/commands/generate.ts](https://github.com/developertown/react-cli/blob/v0.10.1/src/commands/generate.ts)_
+_See code: [src/commands/generate.ts](https://github.com/developertown/react-cli/blob/v0.11.0/src/commands/generate.ts)_
 
-## `react material COMPONENT-NAME
+## `react generateMaterial NAME`
 
 Creates components with Material Components installed
 
@@ -76,7 +92,9 @@ EXAMPLES
   $ react material component-name
   $ react m path/to/component
 ```
-_See Code: [src/commands/generateMaterial.ts](https://github.com/developertown/react-cli/blob/v0.10.1/src/commands/generateMaterial.ts)_
+
+_See code: [src/commands/generateMaterial.ts](https://github.com/developertown/react-cli/blob/v0.11.0/src/commands/generateMaterial.ts)_
+
 ## `react help [COMMAND]`
 
 display help for react
@@ -108,7 +126,7 @@ EXAMPLES
   $ react new project-name
 ```
 
-_See code: [src/commands/new.ts](https://github.com/developertown/react-cli/blob/v0.10.1/src/commands/new.ts)_
+_See code: [src/commands/new.ts](https://github.com/developertown/react-cli/blob/v0.11.0/src/commands/new.ts)_
 
 ## `react prepare`
 
@@ -122,7 +140,7 @@ EXAMPLE
   $ react prepare
 ```
 
-_See code: [src/commands/prepare.ts](https://github.com/developertown/react-cli/blob/v0.10.1/src/commands/prepare.ts)_
+_See code: [src/commands/prepare.ts](https://github.com/developertown/react-cli/blob/v0.11.0/src/commands/prepare.ts)_
 
 ## `react upgrade`
 
@@ -136,5 +154,5 @@ EXAMPLE
   $ react upgrade
 ```
 
-_See code: [src/commands/upgrade.ts](https://github.com/developertown/react-cli/blob/v0.10.1/src/commands/upgrade.ts)_
+_See code: [src/commands/upgrade.ts](https://github.com/developertown/react-cli/blob/v0.11.0/src/commands/upgrade.ts)_
 <!-- commandsstop -->
