@@ -4,6 +4,7 @@ module.exports = {
   env: {
     browser: false,
     node: true,
+    es6: true,
   },
   plugins: [
     'prettier',
@@ -24,6 +25,8 @@ module.exports = {
     '@typescript-eslint/explicit-member-accessibility': 'off',
     // returning undefined / void is fine.
     '@typescript-eslint/explicit-function-return-type': 'off',
+    // this rule does not make sense when usages are runtime.
+    '@typescript-eslint/no-use-before-define': 'off',
 
     /**
      * general

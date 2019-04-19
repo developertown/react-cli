@@ -25,7 +25,8 @@ export class PrepareCommand extends Command {
             },
             {
               title: 'Installing blueprint dependencies',
-              task: () => exec('yarn add --dev ember-cli @developertown/react-generators-blueprint'),
+              task: () =>
+                exec('yarn add --dev ember-cli @developertown/react-generators-blueprint'),
             },
           ]),
       },

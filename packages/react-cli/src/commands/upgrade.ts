@@ -6,9 +6,7 @@ import { appBlueprint } from '../utils/info';
 export class UpgradeCommand extends Command {
   static description = 'Upgrades an existing project';
 
-  static examples = [
-    '$ react upgrade',
-  ];
+  static examples = ['$ react upgrade'];
 
   async run() {
     await ensureDependencies();

@@ -7,10 +7,7 @@ import { downloadTSConfigFiles } from '../tasks/download-ts-config';
 import { exec } from '../utils/shell';
 import { appBlueprint } from '../utils/info';
 
-const requiredOptions = [
-  `--blueprint ${appBlueprint}`,
-  '--skip-npm',
-];
+const requiredOptions = [`--blueprint ${appBlueprint}`, '--skip-npm'];
 
 export class NewCommand extends Command {
   static description = 'Creates a new react application';
@@ -57,7 +54,7 @@ export class NewCommand extends Command {
         message: 'Select UI Framework',
         name: 'style',
         choices: [
-          { name: 'Material UI', value: 'materialUi' }
+          { name: 'Material UI', value: 'materialUi' },
           // TODO:
           // - just sass?
           //   - sass is default right now, do we want sass to be an option instead?
@@ -71,7 +68,7 @@ export class NewCommand extends Command {
     let options = [
       args.projectName || answers.name,
       ...answers.functionality.map((feat: string) => `--${feat}`),
-      ...answers.style.map((styleFramework: string) => `--${styleFramework}`)
+      ...answers.style.map((styleFramework: string) => `--${styleFramework}`),
     ];
 
     let argsForEmber = ['new', ...options, ...requiredOptions].join(' ');
@@ -91,8 +88,8 @@ export class NewCommand extends Command {
       },
       {
         title: 'Formatting code',
-        task: () => exec(`cd ${options[0]} && yarn lint:js --fix --quiet`)
-      }
+        task: () => exec(`cd ${options[0]} && yarn lint:js --fix --quiet`),
+      },
     ]);
 
     await tasks.run();
