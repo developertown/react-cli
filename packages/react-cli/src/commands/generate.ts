@@ -15,7 +15,7 @@ export class GenerateCommand extends Command {
     '$ react g component component-name --route=dashboard/posts',
     '',
     '$ react g route route-name',
-    '$ react g route path/to/route-name'
+    '$ react g route path/to/route-name',
   ];
 
   static args = [{ name: 'generator', required: true }, { name: 'name', required: true }];
@@ -27,12 +27,12 @@ export class GenerateCommand extends Command {
       hidden: false,
       multiple: false,
       required: false,
-    })
+    }),
   };
 
   async run() {
     const { args, flags } = this.parse(GenerateCommand);
-    
+
     await ensureDependencies();
 
     let generatorArgs = ['g', args.generator, args.name];

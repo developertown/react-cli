@@ -1,7 +1,8 @@
 import shell from 'shelljs';
 import fs from 'fs';
+import util from 'util';
 
-export function exec(command: string, options = {}):Promise<String> {
+export function exec(command: string, options = {}): Promise<string> {
   return new Promise((resolve, reject) => {
     let bashPath = shell.which('bash').stdout;
 
@@ -60,15 +61,12 @@ export async function doesProgramExist(name: string) {
   }
 }
 
-export async function doesApplicationHaveModule(name: string): Promise<Boolean>{
-  try {
-    const moduleList = await exec(`npm ls --parseable --prod`);
-    const hasModule = moduleList.includes(`${name}`)
+export async function doesApplicationHaveModule(name: string): Promise<boolean> {
+  const readFile = util.promisify(fs.readFile);
+  const contents = await readFile('./package.json', 'utf8');
+  const contentsToJSON = JSON.parse(contents.toString());
 
-    return hasModule;
-  } catch(e){
-    return false;
-  }
+  return Object.keys(contentsToJSON.dependencies).indexOf(name) != -1;
 }
 
 export function hasNvm() {

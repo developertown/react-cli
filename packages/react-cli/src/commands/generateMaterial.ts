@@ -4,44 +4,37 @@ import { runEmberInteractively } from '../tasks/run-ember';
 import inquirer = require('inquirer');
 
 export class GenerateMaterialCommand extends Command {
-    static description = 'Creates components with Material Components installed';
+  static description = 'Creates components with Material Components installed';
 
-    static aliases = ['material', 'm'];
-    
-    static examples = [
-        '$ react material component-name',
-        '$ react m path/to/component'
-    ]
+  static aliases = ['material', 'm'];
 
-    static args = [{ name: 'name', required: true }];
+  static examples = ['$ react material component-name', '$ react m path/to/component'];
 
-    async run(): Promise<any> {
-        const { args } = this.parse(GenerateMaterialCommand);
-        let options = [];
+  static args = [{ name: 'name', required: true }];
 
-        await ensureMaterialExists();
+  async run(): Promise<any> {
+    const { args } = this.parse(GenerateMaterialCommand);
+    let options = [];
 
-        const answers: any = await inquirer.prompt([
-            {
-                type: 'checkbox',
-                message: 'Select Material Components',
-                name: 'materialComponent',
-                choices: [
-                    { name: 'Button', value: 'Button' },
-                    { name: 'TextField', value: 'TextField' },
-                    { name: 'Table', value: 'Table' },
-                    { name: 'Card', value: 'Card' }
-                ]
-            }
-        ])
-        options = [
-            ...answers.materialComponent.map((component: string) => `--${component}`)
-        ]
+    await ensureMaterialExists();
 
-        let generatorArgs = ['g', 'material', args.name];
+    const answers: any = await inquirer.prompt([
+      {
+        type: 'checkbox',
+        message: 'Select Material Components',
+        name: 'materialComponent',
+        choices: [
+          { name: 'Button', value: 'Button' },
+          { name: 'TextField', value: 'TextField' },
+          { name: 'Table', value: 'Table' },
+          { name: 'Card', value: 'Card' },
+        ],
+      },
+    ]);
+    options = [...answers.materialComponent.map((component: string) => `--${component}`)];
 
-        await runEmberInteractively([...generatorArgs, , ...options].join(' '));
-    }
+    let generatorArgs = ['g', 'material', args.name];
 
+    await runEmberInteractively([...generatorArgs, ...options].join(' '));
+  }
 }
-// TODO: handle class and functional components
