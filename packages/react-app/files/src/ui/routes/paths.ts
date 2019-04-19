@@ -1,12 +1,12 @@
-import { route } from '~/utils/routing';
+import { route } from 'static-route-paths';
 
-export const paths = {
+export const paths = route({
   root: route(),
   todos: route('todos', {
     show: route(':id'),
   }),
 
-  errors: {
+  errors: route({
     notFound: route('not-found'),
-  },
-};
+  }),
+});
