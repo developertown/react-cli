@@ -2,7 +2,6 @@
 
 const path = require('path');
 const normalizeEntityName = require('ember-cli-normalize-entity-name');
-const EOL = require('os').EOL;
 
 module.exports = {
   description: 'Generates a component with material components.',
@@ -33,10 +32,7 @@ module.exports = {
   },
 
   locals: function(options) {
-    let contents = EOL;
-
     return {
-      contents: contents,
       path: options.path,
       button: options.button,
       textField: options.textField,
