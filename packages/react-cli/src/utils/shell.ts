@@ -1,7 +1,7 @@
 import shell from 'shelljs';
 import fs from 'fs';
 
-export function exec(command: string, options = {}) {
+export function exec(command: string, options = {}):Promise<String> {
   return new Promise((resolve, reject) => {
     let bashPath = shell.which('bash').stdout;
 
@@ -14,7 +14,6 @@ export function exec(command: string, options = {}) {
     if (hasNvm()) {
       command = applyNvm(command);
     }
-
     // console.log('hasNotion', hasNotion(), 'full command: ', command);
     shell.exec(
       command,
@@ -57,6 +56,17 @@ export async function doesProgramExist(name: string) {
 
     return path;
   } catch (e) {
+    return false;
+  }
+}
+
+export async function doesApplicationHaveModule(name: string): Promise<Boolean>{
+  try {
+    const moduleList = await exec(`npm ls --parseable --prod`);
+    const hasModule = moduleList.includes(`${name}`)
+
+    return hasModule;
+  } catch(e){
     return false;
   }
 }

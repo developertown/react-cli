@@ -2,8 +2,6 @@ import { Command, flags } from '@oclif/command';
 import { ensureDependencies } from '../tasks/ensure-dependiencies';
 import { runEmber, runEmberInteractively } from '../tasks/run-ember';
 import { exec } from '../utils/shell';
-import Listr from 'listr';
-import inquirer from 'inquirer';
 
 export class GenerateCommand extends Command {
   static description =
@@ -17,9 +15,7 @@ export class GenerateCommand extends Command {
     '$ react g component component-name --route=dashboard/posts',
     '',
     '$ react g route route-name',
-    '$ react g route path/to/route-name',
-    '',
-    '$ react g material component-name'
+    '$ react g route path/to/route-name'
   ];
 
   static args = [{ name: 'generator', required: true }, { name: 'name', required: true }];
@@ -36,7 +32,6 @@ export class GenerateCommand extends Command {
 
   async run() {
     const { args, flags } = this.parse(GenerateCommand);
-    let options = [];
     
     await ensureDependencies();
 
@@ -46,25 +41,6 @@ export class GenerateCommand extends Command {
       generatorArgs.push(`--path=${flags.route}/-components`);
     }
 
-    if(args.generator === 'material'){
-      const answers: any = await inquirer.prompt([
-        {
-          type: 'checkbox',
-          message: 'Select Material Components',
-          name: 'materialComponent',
-          choices: [
-            { name: 'Button', value: 'Button' },
-            { name: 'TextField', value: 'TextField' },
-            { name: 'Table', value: 'Table' },
-            { name: 'Card', value: 'Card' }
-          ]
-        }
-      ])
-      options = [
-        ...answers.materialComponent.map((component: string) => `--${component}`)
-      ]
-    }
-
-    await runEmberInteractively([...generatorArgs, ...options].join(' '));
+    await runEmberInteractively([...generatorArgs].join(' '));
   }
 }
