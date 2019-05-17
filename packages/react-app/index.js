@@ -1,6 +1,9 @@
 'use strict';
 
 const stringUtil = require('ember-cli-string-utils');
+const fsPath = require('path');
+
+const version = require(fsPath.join(__dirname, 'package.json')).version;
 
 module.exports = {
   description: 'Generates a React application.',
@@ -48,8 +51,10 @@ module.exports = {
       jsonapi: options.jsonapi,
       dotnetBackend: options.dotnetBackend,
       materialUi: options.materialUi,
+      sass: options.sass,
       redux: options.redux,
       testing: true,
+      blueprintVersion: version,
     };
   },
 };

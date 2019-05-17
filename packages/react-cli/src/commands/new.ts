@@ -55,12 +55,7 @@ export class NewCommand extends Command {
         name: 'style',
         choices: [
           { name: 'Material UI', value: 'materialUi' },
-          // TODO:
-          // - just sass?
-          //   - sass is default right now, do we want sass to be an option instead?
-          // - bootstrap?
-          // - bulma?
-          // - shoelace?
+          { name: 'SASS', value: 'sass' },
         ],
       },
     ]);
