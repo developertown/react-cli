@@ -1,6 +1,6 @@
 import Listr from 'listr';
 import { error, success } from '../utils/print';
-import { exec, hasNotion, doesProgramExist } from '../utils/shell';
+import { exec, hasVolta, doesProgramExist } from '../utils/shell';
 
 export async function ensureYarnExists() {
   const hasYarn = await doesProgramExist('yarn');
@@ -9,8 +9,8 @@ export async function ensureYarnExists() {
     error('yarn is not installed.');
     let command = 'npm install -g yarn';
 
-    if (hasNotion()) {
-      command = 'notion install yarn';
+    if (hasVolta()) {
+      command = 'volta install yarn';
     }
 
     let tasks = new Listr([

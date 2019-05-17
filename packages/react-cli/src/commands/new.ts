@@ -1,6 +1,6 @@
 import { Command } from '@oclif/command';
 import { ensureDependencies } from '../tasks/ensure-dependiencies';
-import { runEmber } from '../tasks/run-ember';
+import { runEmberInteractively } from '../tasks/run-ember';
 import inquirer = require('inquirer');
 import Listr from 'listr';
 import { downloadTSConfigFiles } from '../tasks/download-ts-config';
@@ -76,7 +76,7 @@ export class NewCommand extends Command {
     let tasks = new Listr([
       {
         title: 'Creating react project',
-        task: () => runEmber(argsForEmber),
+        task: async () => await runEmberInteractively(argsForEmber),
       },
       {
         title: 'Downloading shared config for DeveloperTown',

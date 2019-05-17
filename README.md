@@ -2,10 +2,12 @@
 
 ## Installation
 
-### [**_notion_**](https://www.notionjs.com/)
+### [**_volta_**](https://volta.sh/)
 ```bash
-notion install @developertown/react-cli
+volta install @developertown/react-cli
 ```
+
+NOTE: if you don't have volta, be sure you have at least some other node manager, such as [nvm](https://github.com/nvm-sh/nvm)
 
 ### **_npm_**
 
@@ -72,10 +74,10 @@ yarn link "@developertown/react-generators-blueprint"
 ### Testing installation
 
 ```bash
-rm -rf ~/.notion
-# install notion
+rm -rf ~/.volta
+# install volta
 # new shell
-notion install node 8
+volta install node
 
 # setup refs to local project
 export REACT_APP_BLUEPRINT_PATH=$HOME/Development/Work/DeveloperTown/react-cli/packages/react-app

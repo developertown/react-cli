@@ -7,15 +7,15 @@ export function exec(command: string, options = {}): Promise<string> {
     let bashPath = shell.which('bash').stdout;
 
     // because this is loaded in login shells,
-    // we need to set up notion manually. :(
-    if (hasNotion()) {
-      command = applyNotion(command);
+    // we need to set up volta manually. :(
+    if (hasVolta()) {
+      command = applyVolta(command);
     }
 
     if (hasNvm()) {
       command = applyNvm(command);
     }
-    // console.log('hasNotion', hasNotion(), 'full command: ', command);
+    // console.log('hasVolta', hasVolta(), 'full command: ', command);
     shell.exec(
       command,
       { silent: true, shell: bashPath, env: { FORCE_COLOR: 'true' }, ...options },
@@ -39,7 +39,7 @@ function applyNvm(command: string) {
   ].join(' && ');
 }
 
-function applyNotion(command: string) {
+function applyVolta(command: string) {
   let path = shell.env['NOTION_HOME'];
   let home = shell.env['HOME'];
 
@@ -77,8 +77,8 @@ export function hasNvm() {
   return fs.existsSync(path);
 }
 
-export function hasNotion() {
-  // return false; // notion has some bugs atm
+export function hasVolta() {
+  // return false; // volta has some bugs atm
   let path = shell.env['NOTION_HOME'];
 
   if (!path) return false;

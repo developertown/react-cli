@@ -1,6 +1,6 @@
 import Listr from 'listr';
 import { error, success } from '../utils/print';
-import { exec, doesProgramExist, hasNotion } from '../utils/shell';
+import { exec, doesProgramExist, hasVolta } from '../utils/shell';
 
 export async function ensureEmberCliExists() {
   const hasEmber = await doesProgramExist('ember');
@@ -9,8 +9,8 @@ export async function ensureEmberCliExists() {
     error('ember-cli is not installed.');
     let command = 'npm install -g ember-cli';
 
-    if (hasNotion()) {
-      command = 'notion install ember-cli';
+    if (hasVolta()) {
+      command = 'volta install ember-cli';
     }
 
     let tasks = new Listr([
