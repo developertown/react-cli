@@ -53,10 +53,7 @@ export class NewCommand extends Command {
         type: 'checkbox',
         message: 'Select UI Framework',
         name: 'style',
-        choices: [
-          { name: 'Material UI', value: 'materialUi' },
-          { name: 'SASS', value: 'sass' },
-        ],
+        choices: [{ name: 'Material UI', value: 'materialUi' }, { name: 'SASS', value: 'sass' }],
       },
     ]);
 
