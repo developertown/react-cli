@@ -1,6 +1,6 @@
 import { Command, flags } from '@oclif/command';
 import { ensureDependencies } from '../tasks/ensure-dependiencies';
-import { runEmber, runEmberInteractively } from '../tasks/run-ember';
+import { runEmberInteractively } from '../tasks/run-ember';
 import { exec } from '../utils/shell';
 
 export class GenerateCommand extends Command {

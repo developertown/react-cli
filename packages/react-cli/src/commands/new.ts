@@ -1,6 +1,6 @@
 import { Command } from '@oclif/command';
 import { ensureDependencies } from '../tasks/ensure-dependiencies';
-import { runEmber } from '../tasks/run-ember';
+import { runEmberInteractively } from '../tasks/run-ember';
 import inquirer = require('inquirer');
 import Listr from 'listr';
 import { downloadTSConfigFiles } from '../tasks/download-ts-config';
@@ -53,15 +53,7 @@ export class NewCommand extends Command {
         type: 'checkbox',
         message: 'Select UI Framework',
         name: 'style',
-        choices: [
-          { name: 'Material UI', value: 'materialUi' },
-          // TODO:
-          // - just sass?
-          //   - sass is default right now, do we want sass to be an option instead?
-          // - bootstrap?
-          // - bulma?
-          // - shoelace?
-        ],
+        choices: [{ name: 'Material UI', value: 'materialUi' }, { name: 'SASS', value: 'sass' }],
       },
     ]);
 
@@ -76,7 +68,7 @@ export class NewCommand extends Command {
     let tasks = new Listr([
       {
         title: 'Creating react project',
-        task: () => runEmber(argsForEmber),
+        task: async () => await runEmberInteractively(argsForEmber),
       },
       {
         title: 'Downloading shared config for DeveloperTown',
